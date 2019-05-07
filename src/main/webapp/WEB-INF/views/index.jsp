@@ -9,6 +9,8 @@
 	<%@ include file="include/header.jsp" %>
 </head>
 <body>
-	<%@ include file="login/login.jsp" %>
+	<c:if test="${page != null }">
+		<jsp:include page="${page}"></jsp:include>
+	</c:if>
 </body>
 </html>

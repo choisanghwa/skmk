@@ -68,7 +68,6 @@ input[type=button], input[type=submit], input[type=reset]  {
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   width : 50%;
-  font-size : 1.5vw;
   vertical-align : center;
   font-family: Youth;
 }
@@ -85,7 +84,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text] {
+.loginText {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;

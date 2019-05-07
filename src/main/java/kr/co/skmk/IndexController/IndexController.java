@@ -17,16 +17,14 @@ public class IndexController {
 	private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
+	public String index(Locale locale, Model model) {		
+		model.addAttribute("page", "main/main.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public String login(Model model) {
+		model.addAttribute("page", "login/login.jsp");
 		return "index";
 	}
 	

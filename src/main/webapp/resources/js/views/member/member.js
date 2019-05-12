@@ -16,7 +16,7 @@ $(function() {
 	// 회원 가입 처리
 	$('#join-submit').click(function(e) {
 		e.preventDefault();
-		var email = $('#InputEmail').val();
+		var email = $('#inputEmail').val();
 		
 		if (CheckStringEmpty($("#inputName").val())) {
 			alert('이름을 입력하세요');
@@ -24,9 +24,9 @@ $(function() {
 			return false;
 		} else if (CheckStringEmpty(email)) {
 			alert('이메일을 입력하세요');
-			$("#InputEmail").focus();
+			$("#inputEmail").focus();
 			return false;
-		} else if (checkEmail(value) == false) {
+		} else if (CheckEmail(email) == false) {
 			alert('이메일 주소가 유효하지 않습니다. ex)abc@gmail.com');
 			$("#inputEmail").focus();
 			return false;
@@ -45,25 +45,26 @@ $(function() {
 			alert('휴대폰 번호를 입력하세요');
 			$("#inputMobile").focus();
 			return false;
-		} else if (($("#agree").is(":checked") == false)) {
+		} else if (($("#inputAgree").is(":checked") == false)) {
 			alert('약관에 동의하셔야 합니다');
 			return false;
 		}
 		else { // 무사히 모두 통과되면 회원가입 수행
 			$.ajax({
-				url : '${path}/member/register',
+				url : '../member/register',
 				type : 'POST',
 				data : {
-					name:$("#inputName").val(),
-					email:$("#inputEmail").val(),
-					password:$("#inputPassword").val(),
-					mobile:$("#inputMobile").val()
+					memberName:$("#inputName").val(),
+					memberEmail:$("#inputEmail").val(),
+					memberPassword:$("#inputPassword").val(),
+					memberMobile:$("#inputMobile").val()
 				},
-				dataType : "json",
-				susscess : function(response) {
-					if(response.result == 1) {
-						location.href = "${path}/login/successRegister";
-					} else if (response.result == 0) {
+				dataType : "text",
+				success : function(data) {
+					if(data == 1) {
+						alert("회원 가입을 축하합니다.");
+						location.href = "../login";
+					} else if (data == 0) {
 						alert("이미 가입된 아이디 입니다.");
 					} else {
 						alert("등록 중에 에러가 발생하였습니다.");

@@ -23,15 +23,14 @@ public class MemberDAOImpl implements MemberDAO {
 	SqlSession sqlSession;
 	
 	@Override
-	public void insertMember(MemberDTO member) {
-		// TODO Auto-generated method stub
-
+	public int insertMember(MemberDTO member) {
+		return sqlSession.insert("member.insertMember", member);
 	}
 
 	@Override
-	public boolean checkPw(String userMail, String password) {
+	public boolean loginMember(MemberDTO dto) {
 		// TODO Auto-generated method stub
-		return false;
+		return sqlSession.selectOne("member.loginMember", dto);
 	}
 
 }

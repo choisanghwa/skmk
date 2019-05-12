@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="slideshow-container">
 
 	<!-- 슬라이드 div 객체 -->
@@ -45,5 +45,10 @@
 
 <div class="contents-wrap">
 	<button class="button card-panel waves-effect white">주문하기</button>
-	<button class="button card-panel waves-effect white" id="goLogin">로그인</button>
+	<c:if test="${status == 'success'}">
+		<button class="button card-panel waves-effect white" id="goPlace">가게 생성</button>
+	</c:if>        
+	<c:if test="${status != 'success'}">
+		<button class="button card-panel waves-effect white" id="goLogin">로그인</button>
+	</c:if> 
 </div>

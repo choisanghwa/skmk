@@ -5,12 +5,14 @@
 <!-- 다른 mapper와 중복되지 않도록 네임 스페이스 기재 -->
 <mapper namespace="member">
 	
-	<insert id="register">
+	<insert id="insertMember">
 		insert into member(memberMail, memberPassword, memberName, memberMobile)
-		values (#{memberMail}, #{memberPassword}, #{memberName}, #{memberMobile})
+		values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberMobile})
 	</insert>
 	
-	<select id="login">
-		select * from member
+	<select id="loginMember" resultType="java.lang.Boolean">
+		select decode(count(*),1,'true', 'false')
+		from member
+		where memberMail= #{memberEmail} and memberPassword = #{memberPassword}
 	</select>
 </mapper>

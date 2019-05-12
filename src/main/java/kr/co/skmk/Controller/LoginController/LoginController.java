@@ -1,4 +1,4 @@
-package kr.co.skmk.LoginController;
+package kr.co.skmk.Controller.LoginController;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

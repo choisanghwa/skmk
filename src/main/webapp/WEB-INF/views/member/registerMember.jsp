@@ -33,13 +33,13 @@
 			<label>약관 동의</label>
 			<div data-toggle="buttons">
 				<span class="fa fa-check"></span>
-				<input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default" autocomplete="off" />
+				<input type="checkbox" name="fancy-checkbox-default" id="inputAgree" autocomplete="off" />
 				<a href="#">이용약관</a>에 동의합니다.
 			</div>
 		</div>
 		
 		<div class="form-group text-center">
-			<button type="submit" id="join-submit" class="btn btn-primary">
+			<button type="button" id="join-submit" class="btn btn-primary">
 				회원가입 <i class="fa fa-check spaceLeft"></i>
 			</button>
 			<button type="button" id="cancel-submit" class="btn btn-warning">

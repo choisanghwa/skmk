@@ -1,4 +1,4 @@
-package kr.co.skmk.IndexController;
+package kr.co.skmk.Controller.IndexController;
 
 import java.text.DateFormat;
 import java.util.Date;

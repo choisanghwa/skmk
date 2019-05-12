@@ -10,7 +10,7 @@
 
 <!-- 기본 파일 참조 -->
 	<script src="${path}/resources/js/jquery/jquery-3.4.1.min.js"></script>
-	<link rel="stylesheet" href="${path}/resources/css/basic.css">
+	<link rel="stylesheet" href="${path}/resources/css/views/basic.css">
 
 <!-- 부트스트랩 & 메터리얼 참조 (둘다 동시에 쓰면 충돌 발생함) -->
 <c:choose>
@@ -29,9 +29,10 @@
 </c:choose>
 
 <!-- CSS 참조 영역 -->
-	<link rel="stylesheet" href="${path}/resources/css/login.css">
-	<link rel="stylesheet" href="${path}/resources/css/main.css">
+	<link rel="stylesheet" href="${path}/resources/css/views/login/login.css">
+	<link rel="stylesheet" href="${path}/resources/css/views/main/main.css">
 
 <!-- JS 참조 영역 -->
-	<script src="${path}/resources/js/main.js"></script>
-	<script src="${path}/resources/js/login.js"></script>
+	<script src="${path}/resources/js/views/main/main.js"></script>
+	<script src="${path}/resources/js/views/login/login.js"></script>
+	<script src="${path}/resources/js/views/member/member.js"></script>

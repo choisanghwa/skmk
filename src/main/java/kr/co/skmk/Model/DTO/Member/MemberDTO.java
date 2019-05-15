@@ -2,16 +2,16 @@ package kr.co.skmk.Model.DTO.Member;
 
 public class MemberDTO {
 	
-	private String memberEmail;
+	private String memberMail;
 	private String memberPassword;
 	private String memberName;
 	private String memberMobile;
 	
-	public String getMemberEmail() {
-		return memberEmail;
+	public String getMemberMail() {
+		return memberMail;
 	}
-	public void setMemberEmail(String memberEmail) {
-		this.memberEmail = memberEmail;
+	public void setMemberMail(String memberMail) {
+		this.memberMail = memberMail;
 	}
 	public String getMemberPassword() {
 		return memberPassword;

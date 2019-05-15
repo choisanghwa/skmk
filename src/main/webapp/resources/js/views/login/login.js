@@ -19,14 +19,14 @@ function loginProcess() {
 			url : './login/loginProcess',
 				type : 'POST',
 				data : {
-					memberEmail:$("#login").val(),
+					memberMail:$("#login").val(),
 					memberPassword:$("#password").val(),
 				},
 				dataType : "text",
 				success : function(data) {
 					if(data == 1) {
 						alert("로그인 성공");
-						location.href = "../";
+						location.href = "../main";
 					} else {
 						alert("로그인 실패");
 					}

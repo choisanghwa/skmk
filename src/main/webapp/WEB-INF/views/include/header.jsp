@@ -32,6 +32,10 @@
 	<link rel="stylesheet" href="${path}/resources/css/views/login/login.css">
 	<link rel="stylesheet" href="${path}/resources/css/views/main/main.css">
 
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <!-- JS 참조 영역 -->
 	<script src="${path}/resources/js/views/main/main.js"></script>
 	<script src="${path}/resources/js/views/login/login.js"></script>

@@ -55,7 +55,7 @@ $(function() {
 				type : 'POST',
 				data : {
 					memberName:$("#inputName").val(),
-					memberEmail:$("#inputEmail").val(),
+					memberMail:$("#inputEmail").val(),
 					memberPassword:$("#inputPassword").val(),
 					memberMobile:$("#inputMobile").val()
 				},

@@ -6,6 +6,7 @@
 
 	<typeAliases>
 		<typeAlias alias="memberDto" type="kr.co.skmk.Model.DTO.Member.MemberDTO" />
+		<typeAlias alias="shopDto" type="kr.co.skmk.Model.DTO.Shop.ShopDTO" />
 	</typeAliases>
 
 </configuration>

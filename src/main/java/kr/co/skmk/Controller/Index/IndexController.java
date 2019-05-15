@@ -18,6 +18,13 @@ public class IndexController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Locale locale, Model model) {		
+//		model.addAttribute("page", "main/main.jsp");
+		model.addAttribute("page", "login/login.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value="/main", method=RequestMethod.GET)
+	public String main(Model model) {
 		model.addAttribute("page", "main/main.jsp");
 		return "index";
 	}

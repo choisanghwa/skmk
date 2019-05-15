@@ -2,7 +2,6 @@ package kr.co.skmk.Controller.Login;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.skmk.Model.DTO.Member.MemberDTO;
+import kr.co.skmk.Model.DTO.Shop.ShopDTO;
 import kr.co.skmk.Service.Member.MemberService;
+import kr.co.skmk.Service.Shop.ShopService;
 
 @Controller
 @RequestMapping("/login")
@@ -21,6 +22,9 @@ public class LoginController {
 	
 	@Inject //MemberService 객체가 자동으로 주입됨.
 	MemberService memberService;
+	
+	@Inject
+	ShopService shopService;
 	
 	@RequestMapping(value="/registerMember", method=RequestMethod.GET)
 	public String registerMember(Model model) {
@@ -38,16 +42,27 @@ public class LoginController {
 	@RequestMapping(value="/loginProcess", method=RequestMethod.POST)
 	public String loginProcess(@ModelAttribute MemberDTO dto, Model model, HttpSession session) {
 		
-		boolean result = memberService.loginMember(dto);
-		String value;
+		dto = memberService.loginMember(dto);
+		ShopDTO shop = new ShopDTO();
+		String result;
 		
-		if(result) {
-			value = "1";
+		if(dto != null) {
+			
 			session.setAttribute("status","success");
-		} else {
-			value = "0";
-		}
+			session.setAttribute("member", dto);
+			
+			shop = shopService.searchShop(dto.getMemberMail());// 가게 생성 여부 확인		
+			if(shop != null) {
+				session.setAttribute("shop", shop);
+			} else {
+				
+			}
+			result = "1";
 
-		return value;
+		} else {
+			result = "0";
+		}
+		
+		return result;
 	}
 }

@@ -28,7 +28,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public boolean loginMember(MemberDTO dto) {
+	public MemberDTO loginMember(MemberDTO dto) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("member.loginMember", dto);
 	}

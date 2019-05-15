@@ -7,12 +7,12 @@
 	
 	<insert id="insertMember">
 		insert into member(memberMail, memberPassword, memberName, memberMobile)
-		values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberMobile})
+		values (#{memberMail}, #{memberPassword}, #{memberName}, #{memberMobile})
 	</insert>
 	
-	<select id="loginMember" resultType="java.lang.Boolean">
-		select decode(count(*),1,'true', 'false')
+	<select id="loginMember" resultType="memberDto">
+		select *
 		from member
-		where memberMail= #{memberEmail} and memberPassword = #{memberPassword}
+		where memberMail= #{memberMail} and memberPassword = #{memberPassword}
 	</select>
 </mapper>

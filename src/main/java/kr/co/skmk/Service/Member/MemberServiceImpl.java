@@ -17,9 +17,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public boolean loginMember(MemberDTO dto) {
+	public MemberDTO loginMember(MemberDTO member) {
 		// TODO Auto-generated method stub
-		return memberDao.loginMember(dto);
+		return memberDao.loginMember(member);
 	}
 
 }

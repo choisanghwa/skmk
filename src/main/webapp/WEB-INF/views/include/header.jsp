@@ -15,7 +15,8 @@
 <!-- 부트스트랩 & 메터리얼 참조 (둘다 동시에 쓰면 충돌 발생함) -->
 <c:choose>
 	<c:when test="${page == 'login/login.jsp' ||
-					page == 'member/registerMember.jsp'}"> <!-- 부트 스트랩을 쓸  경우 -->
+					page == 'member/registerMember.jsp' ||
+					page == 'shop/registerShop.jsp'}"> <!-- 부트 스트랩을 쓸  경우 -->
 		<link rel="stylesheet" href="${path}/resources/css/bootstrap/bootstrap.min.css">
 		<link rel="stylesheet" href="${path}/resources/css/bootstrap/bootstrap-theme.min.css">
 		<script src="${path}/resources/js/bootstrap/bootstrap.min.js"></script>
@@ -40,3 +41,4 @@
 	<script src="${path}/resources/js/views/main/main.js"></script>
 	<script src="${path}/resources/js/views/login/login.js"></script>
 	<script src="${path}/resources/js/views/member/member.js"></script>
+	<script src="${path}/resources/js/views/shop/shop.js"></script>

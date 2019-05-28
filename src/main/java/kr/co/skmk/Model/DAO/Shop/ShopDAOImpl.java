@@ -21,7 +21,7 @@ public class ShopDAOImpl implements ShopDAO {
 	@Override
 	public int insertShop(ShopDTO shop) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("shop.insertShop", shop);
 	}
 
 	@Override

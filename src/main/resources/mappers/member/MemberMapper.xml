@@ -6,7 +6,7 @@
 <mapper namespace="member">
 	
 	<insert id="insertMember">
-		insert into member(memberMail, memberPassword, memberName, memberMobile)
+		insert into member memberMail, memberPassword, memberName, memberMobile)
 		values (#{memberMail}, #{memberPassword}, #{memberName}, #{memberMobile})
 	</insert>
 	

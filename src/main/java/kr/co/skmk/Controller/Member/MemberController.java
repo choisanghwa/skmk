@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.co.skmk.Controller.Index.IndexController;
 import kr.co.skmk.Model.DTO.Member.MemberDTO;
 import kr.co.skmk.Service.Member.MemberService;
 

@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import kr.co.skmk.Controller.Index.IndexController;
 import kr.co.skmk.Model.DTO.Member.MemberDTO;
 import kr.co.skmk.Model.DTO.Shop.ShopDTO;
 import kr.co.skmk.Service.Member.MemberService;
 import kr.co.skmk.Service.Shop.ShopService;
 
 @Controller
-@RequestMapping("/login")
 public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
@@ -26,7 +27,7 @@ public class LoginController {
 	@Inject
 	ShopService shopService;
 	
-	@RequestMapping(value="/registerMember", method=RequestMethod.GET)
+	@RequestMapping(value="/login/registerMember", method=RequestMethod.GET)
 	public String registerMember(Model model) {
 		model.addAttribute("page", "member/registerMember.jsp");
 		return "index";
@@ -39,7 +40,7 @@ public class LoginController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/loginProcess", method=RequestMethod.POST)
+	@RequestMapping(value="/login/loginProcess", method=RequestMethod.POST)
 	public String loginProcess(@ModelAttribute MemberDTO dto, Model model, HttpSession session) {
 		
 		dto = memberService.loginMember(dto);
@@ -64,5 +65,14 @@ public class LoginController {
 		}
 		
 		return result;
+	}
+	
+	@RequestMapping(value="/login/logout", method=RequestMethod.GET)
+	public String logout(Model model, HttpSession session) {
+		
+		session.invalidate();
+
+		model.addAttribute("page", "login/login.jsp");
+		return "index";
 	}
 }

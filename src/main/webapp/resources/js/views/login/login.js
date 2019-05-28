@@ -65,5 +65,13 @@ $(document).ready(function() {
 
 	$("#loginMember").click(function() {
         loginProcess();
-	})
+	});
+	
+	$("#logout").click(function() {
+		location.href="./login/logout";
+	});
+	
+	$("#goAddShop").click(function() {
+		location.href = "./shop/goRegisterShop";
+	});
 });

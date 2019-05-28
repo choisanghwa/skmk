@@ -53,12 +53,20 @@
 				style="width: 46px">
 		</div>
 		<div class="w3-col s8 w3-bar">
-			<span>Welcome, <strong>Mike</strong></span>
+			<c:if test="${member != null}">
+				<span><strong>${member.getMemberName()} 님,</strong> 환영합니다.</span>
+			</c:if>
+			<c:if test="${member == null}">
+				<span>로그인이 필요합니다.</span>
+			</c:if>
 			<br>
 			<a href="#"
 				class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a> <a
 				href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
 			<a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+		</div>
+		<div class="w3-row s8 w3-bar">
+			<button class="btn waves-effect waves-light" id="logout">로그아웃</button>
 		</div>
 	</div>
 	<hr>

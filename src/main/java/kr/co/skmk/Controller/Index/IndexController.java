@@ -3,6 +3,9 @@ package kr.co.skmk.Controller.Index;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,8 +20,8 @@ public class IndexController {
 	private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Locale locale, Model model) {		
-//		model.addAttribute("page", "main/main.jsp");
+	public String index(Locale locale, Model model, HttpServletRequest request) {		
+
 		model.addAttribute("page", "login/login.jsp");
 		return "index";
 	}
@@ -28,11 +31,5 @@ public class IndexController {
 		model.addAttribute("page", "main/main.jsp");
 		return "index";
 	}
-	
-	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String login(Model model) {
-		model.addAttribute("page", "login/login.jsp");
-		return "index";
-	}
-	
+		
 }

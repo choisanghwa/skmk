@@ -43,3 +43,4 @@
 	<script src="${path}/resources/js/views/login/login.js"></script>
 	<script src="${path}/resources/js/views/member/member.js"></script>
 	<script src="${path}/resources/js/views/shop/shop.js"></script>
+	<script src="${path}/resources/js/views/food/food.js"></script>

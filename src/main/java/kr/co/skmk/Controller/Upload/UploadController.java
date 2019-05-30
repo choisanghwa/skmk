@@ -35,6 +35,15 @@ public class UploadController {
 		// 임시 디렉토리에 저장된 업로드된 파일을
 		// 지정된 디렉토리로 복사
 		// FileCopyUtils.copy ( 바이트 배열, 파일 객체)
+		
+		// 디렉토리 검사
+		File dir = new File(path);
+		
+		if(dir.isDirectory() == false) {
+			dir.mkdirs();
+		}
+		dir = null;
+		
 		FileCopyUtils.copy(fileData, target);
 		return savedName;
 	}

@@ -23,9 +23,8 @@ public class FoodController {
 	@ResponseBody
 	@RequestMapping("/food/insertFood")
 	public String register(@ModelAttribute FoodDTO dto, HttpSession session) {
-		ShopDTO shop = (ShopDTO) session.getAttribute("shop");
-		dto.setShopCode(shop.getShopCode());
-		return Integer.toString(foodService.insertFood(dto));
+		System.out.println(dto);
+		return "1";
 	}
 	
 	@RequestMapping(value="/food/goInsertFood", method=RequestMethod.GET)

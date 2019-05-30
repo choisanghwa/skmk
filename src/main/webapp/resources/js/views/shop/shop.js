@@ -12,6 +12,8 @@ $(function() {
 	$('#join-create').click(function(e) {
 		e.preventDefault();
 	
+		var formData = new FormData($('#registerShopForm')[0]);	
+
 		if (CheckStringEmpty($("#inputShopName").val())) {
 			alert('가게 이름을 입력하세요');
 			$("#inputShopName").focus();
@@ -28,15 +30,15 @@ $(function() {
 			alert('약관에 동의하셔야 합니다');
 			return false;
 		}
-		else { // 무사히 모두 통과되면 회원가입 수행
+		else {
 			$.ajax({
 				url : '../shop/register',
 				type : 'POST',
-				data : {
-					shopName:$("#inputShopName").val(),
-					shopAddress:$("#inputShopAddress").val(),
-					shopLicense:$("#inputShopLicense").val(),
-				},
+				data : formData,
+				enctype : 'multipart/form-data',
+				processData: false,
+				contentType : false,
+				cache : false,
 				dataType : "text",
 				success : function(data) {
 					if(data == 1) {

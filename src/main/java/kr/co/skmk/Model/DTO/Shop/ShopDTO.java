@@ -1,5 +1,7 @@
 package kr.co.skmk.Model.DTO.Shop;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ShopDTO {
 	
 	private String shopCode;
@@ -8,6 +10,7 @@ public class ShopDTO {
 	private String shopLogo;
 	private String shopLicense;
 	private String memberMail;
+	private MultipartFile shopLogoFile;
 	
 	public String getShopCode() {
 		return shopCode;
@@ -45,5 +48,10 @@ public class ShopDTO {
 	public void setMemberMail(String memberMail) {
 		this.memberMail = memberMail;
 	}
-	
+	public MultipartFile getShopLogoFile() {
+		return shopLogoFile;
+	}
+	public void setShopLogoFile(MultipartFile shopLogoFile) {
+		this.shopLogoFile = shopLogoFile;
+	}
 }

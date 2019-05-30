@@ -54,6 +54,9 @@ public class LoginController {
 			if (dto.getMemberImage() == null) {
 				dto.setMemberImage("./resources/image/unknown_userImage.png");
 			}
+			else {
+				dto.setMemberImage("member/" + dto.getMemberImage());
+			}
 			session.setAttribute("status","success");
 			session.setAttribute("member", dto);
 			

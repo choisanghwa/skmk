@@ -21,8 +21,6 @@ $(function() {
 		var formData = new FormData(inputData);	
 		var email = $('#inputEmail').val();
 		
-		$("#join-submit").prop("disabled", true);
-		
 		if (CheckStringEmpty($("#inputName").val())) {
 			alert('이름을 입력하세요');
 			$("#inputName").focus();

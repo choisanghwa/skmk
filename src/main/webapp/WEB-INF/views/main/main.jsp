@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!-- <div class="slideshow-container">
 
 	슬라이드 div 객체
@@ -49,7 +51,7 @@
 	<br>
 	<div class="w3-container w3-row">
 		<div class="w3-col s4">
-			<img src="${member.getMemberImage()}" class="w3-circle w3-margin-right"
+			<img src="${path}/resources/image/${member.getMemberImage()}" class="w3-circle w3-margin-right"
 				style="width: 72px">
 		</div>
 		<div class="w3-col s8 w3-bar">

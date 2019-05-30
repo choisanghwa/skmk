@@ -1,11 +1,16 @@
 package kr.co.skmk.Model.DTO.Food;
 
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class FoodDTO {
 
 	private String shopCode;
 	private String foodName;
 	private String foodPrice;
-	private String foodImage;
+	private List<String> foodImage;
+	private List<MultipartFile> foodImageFiles;
 	
 	public String getShopCode() {
 		return shopCode;
@@ -25,10 +30,16 @@ public class FoodDTO {
 	public void setFoodPrice(String foodPrice) {
 		this.foodPrice = foodPrice;
 	}
-	public String getFoodImage() {
+	public List<String> getFoodImage() {
 		return foodImage;
 	}
-	public void setFoodImage(String foodImage) {
+	public void setFoodImage(List<String> foodImage) {
 		this.foodImage = foodImage;
+	}
+	public List<MultipartFile> getFoodImageFiles() {
+		return foodImageFiles;
+	}
+	public void setFoodImageFiles(List<MultipartFile> foodImageFiles) {
+		this.foodImageFiles = foodImageFiles;
 	}
 }

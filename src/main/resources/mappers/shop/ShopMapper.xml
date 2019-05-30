@@ -5,8 +5,8 @@
 <mapper namespace="shop">
 
 	<insert id="insertShop">
-		insert into shop(shopCode, shopName, shopAddress, shopLicense, memberMail)
-		values (shopCode.NEXTVAL, #{shopName}, #{shopAddress}, #{shopLicense}, #{memberMail})
+		insert into shop(shopCode, shopName, shopAddress, shopLogo, shopLicense, memberMail)
+		values (shopCode.NEXTVAL, #{shopName}, #{shopAddress}, #{shopLogo}, #{shopLicense}, #{memberMail})
 	</insert>
 
 	<select id="searchShop" resultType="shopDto">

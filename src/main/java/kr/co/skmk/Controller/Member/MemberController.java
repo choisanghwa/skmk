@@ -37,11 +37,12 @@ public class MemberController {
 		System.out.println(request);
 		System.out.println(dto);
 
-		String savedName = UploadController.uploadFile(dto.getMemberImageFile().getOriginalFilename(), dto.getMemberImageFile().getBytes());
+		String savedName = UploadController.uploadFile(dto.getMemberImageFile().getOriginalFilename(), dto.getMemberImageFile().getBytes(), "member");
 		
 		dto.setMemberImage(savedName);
 		
 		return Integer.toString(memberService.insertMember(dto));
+
 	}
 		
 	@RequestMapping(value="/member/successRegister", method=RequestMethod.GET)

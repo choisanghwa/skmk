@@ -7,7 +7,7 @@
 	</div>
 </div>
 <div class="col-md-6 col-md-offset-3">
-	<form role="form">
+	<form role="form" multiple="true">
 		<div class="form-group">
 			<label for="inputFoodName">음식 이름</label>
 			<input type="text" class="form-control" id="inputFoodName" placeholder="음식 명을 입력해 주세요.">

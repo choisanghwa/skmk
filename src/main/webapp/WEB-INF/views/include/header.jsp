@@ -16,7 +16,8 @@
 <c:choose>
 	<c:when test="${page == 'login/login.jsp' ||
 					page == 'member/registerMember.jsp' ||
-					page == 'shop/registerShop.jsp'}"> <!-- 부트 스트랩을 쓸  경우 -->
+					page == 'shop/registerShop.jsp' ||
+					page == 'food/registerFood.jsp'}"> <!-- 부트 스트랩을 쓸  경우 -->
 		<link rel="stylesheet" href="${path}/resources/css/bootstrap/bootstrap.min.css">
 		<link rel="stylesheet" href="${path}/resources/css/bootstrap/bootstrap-theme.min.css">
 		<script src="${path}/resources/js/bootstrap/bootstrap.min.js"></script>

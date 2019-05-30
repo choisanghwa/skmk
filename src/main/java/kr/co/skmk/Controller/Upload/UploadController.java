@@ -16,12 +16,21 @@ public class UploadController {
 
 	private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
 
-	public static String uploadFile(String originalName, byte[] fileData) throws Exception {
+	public static String uploadFile(String originalName, byte[] fileData, String uploadPath) throws Exception {
+		
+		String path;
+		
+		switch(uploadPath) {
+			case "member" : path = IndexController.FILE_MEMBER_PATH; break;
+			case "shop" : path = IndexController.FILE_SHOP_PATH; break;
+			case "food" : path = IndexController.FILE_FOOD_PATH; break;
+			default : path = IndexController.RESOURCE_PATH + "/image"; break;
+		}
 		
 		// 1) UUID 생성 (Universal Unique Identifier, 범용 고유 식별자)
 		UUID uid = UUID.randomUUID();
 		String savedName = uid.toString() + "_" + originalName;
-		File target = new File(IndexController.RESOURCE_PATH, savedName);
+		File target = new File(path, savedName);
 		
 		// 임시 디렉토리에 저장된 업로드된 파일을
 		// 지정된 디렉토리로 복사

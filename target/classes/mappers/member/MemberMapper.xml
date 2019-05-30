@@ -6,8 +6,8 @@
 <mapper namespace="member">
 	
 	<insert id="insertMember">
-		insert into member memberMail, memberPassword, memberName, memberMobile)
-		values (#{memberMail}, #{memberPassword}, #{memberName}, #{memberMobile})
+		insert into member (memberMail, memberPassword, memberName, memberMobile, memberImage)
+		values (#{memberMail}, #{memberPassword}, #{memberName}, #{memberMobile}, #{memberImage})
 	</insert>
 	
 	<select id="loginMember" resultType="memberDto">

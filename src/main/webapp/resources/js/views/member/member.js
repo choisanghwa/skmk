@@ -16,7 +16,12 @@ $(function() {
 	// 회원 가입 처리
 	$('#join-submit').click(function(e) {
 		e.preventDefault();
+		
+		var inputData = $('#registerMemberForm')[0];
+		var formData = new FormData(inputData);	
 		var email = $('#inputEmail').val();
+		
+		$("#join-submit").prop("disabled", true);
 		
 		if (CheckStringEmpty($("#inputName").val())) {
 			alert('이름을 입력하세요');
@@ -51,23 +56,14 @@ $(function() {
 		}
 		else { // 무사히 모두 통과되면 회원가입 수행
 			
-			var formData = new FormData();
-			
-			formData.append("memberName", $("#inputName").val());
-			formData.append("memberMail", $("#inputEmail").val());
-			formData.append("memberPassword", $("#inputPassword").val());
-			formData.append("memberMobile", $("#inputMobile").val());
-						
-			$($("#inputMemberImage")[0].files).each(function(index, file) {
-				alert(file);
-				formData.append("memberImageFile", file);
-			});
-			
 			$.ajax({
 				url : '../member/register',
 				type : 'POST',
 				data : formData,
+				enctype : 'multipart/form-data',
 				processData: false,
+				contentType : false,
+				cache : false,
 				dataType : "text",
 				success : function(data) {
 					if(data == 1) {

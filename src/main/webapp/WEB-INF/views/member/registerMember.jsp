@@ -7,18 +7,18 @@
 	</div>
 </div>
 <div class="col-md-6 col-md-offset-3">
-	<form role="form">
+	<form role="form" id="registerMemberForm" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="inputName">성명</label>
-			<input type="text" class="form-control" id="inputName" placeholder="이름을 입력해 주세요.">
+			<input type="text" class="form-control" name="memberName" id="inputName" placeholder="이름을 입력해 주세요.">
 		</div>
 		<div class="form-group">
 			<label for="inputEmail">이메일 주소</label>
-			<input type="email" class="form-control" id="inputEmail" placeholder="이메일 주소를 입력해 주세요.">
+			<input type="email" class="form-control" name="memberMail" id="inputEmail" placeholder="이메일 주소를 입력해 주세요.">
 		</div>
 		<div class="form-group">
 			<label for="inputPassword">비밀 번호</label>
-			<input type="password" class="form-control" id="inputPassword" placeholder="비밀번호를 입력해 주세요.">
+			<input type="password" class="form-control" name="memberPassword" id="inputPassword" placeholder="비밀번호를 입력해 주세요.">
 		</div>
 		<div class="form-group">
 			<label for="inputPasswordCheck">비밀번호 확인</label>
@@ -26,11 +26,11 @@
 		</div>
 		<div class="form-group">
 			<label for="inputMobile">휴대폰 번호</label>
-			<input type="tel" class="form-control" id="inputMobile" placeholder="휴대폰 번호를 입력해 주세요.">
+			<input type="tel" class="form-control" name="memberMobile" id="inputMobile" placeholder="휴대폰 번호를 입력해 주세요.">
 		</div>
 		<div class="form-group">
 			<label for="inputMemberImage">프로필 사진 등록</label>
-			<input type="file" class="form-control" id="inputMemberImage" placeholder="프로필 사진을 등록해 주세요.">
+			<input type="file" class="form-control" name="memberImageFile" id="inputMemberImage" placeholder="프로필 사진을 등록해 주세요.">
 		</div>
 		
 		<div class="form-group">
@@ -43,7 +43,7 @@
 		</div>
 		
 		<div class="form-group text-center">
-			<button type="button" id="join-submit" class="btn btn-primary">
+			<button type="submit" id="join-submit" class="btn btn-primary">
 				회원가입 <i class="fa fa-check spaceLeft"></i>
 			</button>
 			<button type="button" id="cancel-submit" class="btn btn-warning">

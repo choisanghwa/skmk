@@ -50,15 +50,24 @@ $(function() {
 			return false;
 		}
 		else { // 무사히 모두 통과되면 회원가입 수행
+			
+			var formData = new FormData();
+			
+			formData.append("memberName", $("#inputName").val());
+			formData.append("memberMail", $("#inputEmail").val());
+			formData.append("memberPassword", $("#inputPassword").val());
+			formData.append("memberMobile", $("#inputMobile").val());
+						
+			$($("#inputMemberImage")[0].files).each(function(index, file) {
+				alert(file);
+				formData.append("memberImageFile", file);
+			});
+			
 			$.ajax({
 				url : '../member/register',
 				type : 'POST',
-				data : {
-					memberName:$("#inputName").val(),
-					memberMail:$("#inputEmail").val(),
-					memberPassword:$("#inputPassword").val(),
-					memberMobile:$("#inputMobile").val()
-				},
+				data : formData,
+				processData: false,
 				dataType : "text",
 				success : function(data) {
 					if(data == 1) {

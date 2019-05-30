@@ -1,3 +1,4 @@
+
 function CheckStringEmpty(value) {
 	if (value == "" || value == null || value == undefined ||
 			( value != null && typeof value == "object" && !Object.keys(value).length )) {
@@ -26,7 +27,7 @@ function loginProcess() {
 				success : function(data) {
 					if(data == 1) {
 						alert("로그인 성공");
-						location.href = "../main";
+						location.href = "./main";
 					} else {
 						alert("로그인 실패");
 					}
@@ -73,5 +74,17 @@ $(document).ready(function() {
 	
 	$("#goAddShop").click(function() {
 		location.href = "./shop/goRegisterShop";
+	});
+	
+	$("#goInsertFood").click(function() {
+		location.href = "./food/goInsertFood";
+	});
+	
+	$("#cancel-create").click(function() {
+		location.href = "./main";
+	});
+	
+	$("#cancel-addFood").click(function() {
+		location.href = "./main";
 	});
 });

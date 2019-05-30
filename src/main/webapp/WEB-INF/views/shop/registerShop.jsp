@@ -13,7 +13,7 @@
 			<input type="text" class="form-control" id="inputShopName" placeholder="가게 명을 입력해 주세요.">
 		</div>
 		<div class="form-group">
-			<label for="inputEmail">가게 주소</label>
+			<label for="inputShopAddress">가게 주소</label>
 			<input type="text" class="form-control" id="inputShopAddress" placeholder="가게 주소를 입력해 주세요.">
 		</div>
 		<div class="form-group">

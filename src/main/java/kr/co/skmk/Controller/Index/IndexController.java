@@ -18,10 +18,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class IndexController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
-
+	public static String RESOURCE_PATH;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Locale locale, Model model, HttpServletRequest request) {		
 
+		RESOURCE_PATH = request.getServletContext().getRealPath("/resources").replace("\\",  "/");
+		
 		model.addAttribute("page", "login/login.jsp");
 		return "index";
 	}

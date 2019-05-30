@@ -1,11 +1,15 @@
 package kr.co.skmk.Model.DTO.Member;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MemberDTO {
 	
 	private String memberMail;
 	private String memberPassword;
 	private String memberName;
 	private String memberMobile;
+	private String memberImage;
+	private MultipartFile memberImageFile;
 	
 	public String getMemberMail() {
 		return memberMail;
@@ -30,6 +34,18 @@ public class MemberDTO {
 	}
 	public void setMemberMobile(String memberMobile) {
 		this.memberMobile = memberMobile;
+	}
+	public String getMemberImage() {
+		return memberImage;
+	}
+	public void setMemberImage(String memberImage) {
+		this.memberImage = memberImage;
+	}
+	public MultipartFile getMemberImageFile() {
+		return memberImageFile;
+	}
+	public void setMemberImageFile(MultipartFile memberImageFile) {
+		this.memberImageFile = memberImageFile;
 	}
 	
 }

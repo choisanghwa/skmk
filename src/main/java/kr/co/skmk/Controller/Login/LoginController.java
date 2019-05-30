@@ -46,9 +46,14 @@ public class LoginController {
 		dto = memberService.loginMember(dto);
 		ShopDTO shop = new ShopDTO();
 		String result;
-		
+
+		String path = IndexController.RESOURCE_PATH;
+				
 		if(dto != null) {
 			
+			if (dto.getMemberImage() == null) {
+				dto.setMemberImage("./resources/image/unknown_userImage.png");
+			}
 			session.setAttribute("status","success");
 			session.setAttribute("member", dto);
 			

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Maptter 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<!-- 다른 mapper와 중복되지 않도록 네임 스페이스 기재 -->
+<mapper namespace="food">
+	
+	<insert id="insertFood">
+		insert into food shopCode, foodName, foodPrice, foodImage)
+		values (#{shopCode}, #{foodName}, #{foodPrice}, #{foodImage})
+	</insert>
+	
+	<select id="loginMember" resultType="memberDto">
+		select *
+		from member
+		where memberMail= #{memberMail} and memberPassword = #{memberPassword}
+	</select>
+</mapper>

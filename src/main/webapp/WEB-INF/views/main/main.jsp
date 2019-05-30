@@ -49,8 +49,8 @@
 	<br>
 	<div class="w3-container w3-row">
 		<div class="w3-col s4">
-			<img src="/w3images/avatar2.png" class="w3-circle w3-margin-right"
-				style="width: 46px">
+			<img src="${member.getMemberImage()}" class="w3-circle w3-margin-right"
+				style="width: 72px">
 		</div>
 		<div class="w3-col s8 w3-bar">
 			<c:if test="${member != null}">
@@ -170,6 +170,10 @@
 					</div>
 				</div>
 			</div>
+			
+			<button class="w3-button w3-dark-grey" id="goInsertFood">
+				음식 등록하기 <i class="fa fa-arrow-right"></i>
+			</button>
 
 			<div class="w3-panel">
 				<div class="w3-row-padding" style="margin: 0 -16px">

@@ -28,6 +28,10 @@
 			<label for="inputMobile">휴대폰 번호</label>
 			<input type="tel" class="form-control" id="inputMobile" placeholder="휴대폰 번호를 입력해 주세요.">
 		</div>
+		<div class="form-group">
+			<label for="inputMemberImage">프로필 사진 등록</label>
+			<input type="file" class="form-control" id="inputMemberImage" placeholder="프로필 사진을 등록해 주세요.">
+		</div>
 		
 		<div class="form-group">
 			<label>약관 동의</label>

@@ -6,13 +6,20 @@
 <mapper namespace="food">
 	
 	<insert id="insertFood">
-		insert into food shopCode, foodName, foodPrice, foodImage)
-		values (#{shopCode}, #{foodName}, #{foodPrice}, #{foodImage})
+		insert into food (foodCode, shopCode, foodName, foodPrice)
+		values (foodCode.NEXTVAL, #{shopCode}, #{foodName}, #{foodPrice})
 	</insert>
 	
-	<select id="loginMember" resultType="memberDto">
-		select *
-		from member
-		where memberMail= #{memberMail} and memberPassword = #{memberPassword}
+	<insert id="insertFoodImage">
+		insert all  
+		<foreach collection="foodImage" item="item">	
+			into foodImage (foodCode, foodImage) values (#{foodCode}, #{item})
+		</foreach>
+		SELECT * FROM dual
+	</insert>
+		
+	<select id="searchFoodCode" parameterType="foodDto" resultType="string">
+		select max(foodCode)
+		from food where shopCode=#{shopCode}
 	</select>
 </mapper>

@@ -18,7 +18,7 @@
 		</div>
 		<div class="form-group">
 			<label for="inputFoodImage">음식 이미지</label>
-			<input type="file" class="form-control" name="foodImage" id="inputFoodImage" multiple placeholder="음식 이미지를 등록해 주세요.">
+			<input type="file" class="form-control" name="foodImageFile" id="inputFoodImage" multiple placeholder="음식 이미지를 등록해 주세요.">
 		</div>
 		
 		<div class="form-group text-center">

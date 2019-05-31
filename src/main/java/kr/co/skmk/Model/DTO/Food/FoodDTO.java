@@ -10,8 +10,8 @@ public class FoodDTO {
 	private String foodCode;
 	private String foodName;
 	private String foodPrice;
-	private List<FoodImageDTO> foodImageFiles;
-	private List<MultipartFile> foodImage;
+	private List<String> foodImage;
+	private List<MultipartFile> foodImageFile;
 	
 	public String getShopCode() {
 		return shopCode;
@@ -37,16 +37,16 @@ public class FoodDTO {
 	public void setFoodPrice(String foodPrice) {
 		this.foodPrice = foodPrice;
 	}
-	public List<FoodImageDTO> getFoodImageFiles() {
-		return foodImageFiles;
-	}
-	public void setFoodImageFiles(List<FoodImageDTO> foodImageFiles) {
-		this.foodImageFiles = foodImageFiles;
-	}
-	public List<MultipartFile> getFoodImage() {
+	public List<String> getFoodImage() {
 		return foodImage;
 	}
-	public void setFoodImage(List<MultipartFile> foodImage) {
+	public void setFoodImage(List<String> foodImage) {
 		this.foodImage = foodImage;
+	}
+	public List<MultipartFile> getFoodImageFile() {
+		return foodImageFile;
+	}
+	public void setFoodImageFile(List<MultipartFile> foodImageFile) {
+		this.foodImageFile = foodImageFile;
 	}
 }

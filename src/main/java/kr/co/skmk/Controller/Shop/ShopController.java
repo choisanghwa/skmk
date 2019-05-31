@@ -33,9 +33,7 @@ public class ShopController {
 	@ResponseBody
 	@RequestMapping (value = "/shop/register", method = RequestMethod.POST)
 	public String register(@ModelAttribute ShopDTO dto, MultipartHttpServletRequest request, HttpSession session) throws IOException, Exception {
-		
-		System.out.println(dto);
-		
+				
 		String savedName = UploadController.uploadFile(
 				dto.getShopLogoFile().getOriginalFilename(),
 				dto.getShopLogoFile().getBytes(), "shop");

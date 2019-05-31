@@ -20,7 +20,10 @@ public class FoodDAOImpl implements FoodDAO {
 	@Override
 	public int insertFood(FoodDTO food) {
 		// TODO Auto-generated method stub
-		return sqlSession.insert("shop.insertFood", food);
+		int result = sqlSession.insert("food.insertFood", food);
+		food.setFoodCode((String) sqlSession.selectOne("food.searchFoodCode", food));
+		sqlSession.insert("food.insertFoodImage", food);
+		return result;
 	}
 
 	@Override

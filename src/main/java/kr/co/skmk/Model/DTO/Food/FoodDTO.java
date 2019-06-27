@@ -13,6 +13,17 @@ public class FoodDTO {
 	private List<String> foodImage;
 	private List<MultipartFile> foodImageFile;
 	
+	public FoodDTO(String shopCode) {
+		this.shopCode = shopCode;
+	}
+	
+	public FoodDTO(String foodCode, String foodName, String foodPrice, String shopCode) {
+		this.shopCode  = shopCode;
+		this.foodCode  = foodCode;
+		this.foodName  = foodName;
+		this.foodPrice = foodPrice;
+	}
+	
 	public String getShopCode() {
 		return shopCode;
 	}

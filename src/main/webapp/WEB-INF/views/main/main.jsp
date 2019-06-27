@@ -123,8 +123,9 @@
 			</header>
 
 			<div class="w3-row-padding w3-margin-bottom">
-				<div class="w3-quarter">
-					<div class="w3-container w3-red w3-padding-16">
+				<div class="w3-quarter dash_buttons"
+					onclick="openBoard('dash_alerm', this)">
+					<div class="w3-container w3-red w3-padding-16 button_alerm">
 						<div class="w3-left">
 							<i class="fa fa-comment w3-xxxlarge"></i>
 						</div>
@@ -135,8 +136,9 @@
 						<h4>Messages</h4>
 					</div>
 				</div>
-				<div class="w3-quarter">
-					<div class="w3-container w3-blue w3-padding-16">
+				<div class="w3-quarter dash_buttons"
+					onclick="openBoard('dash_chart', this)">
+					<div class="w3-container w3-blue w3-padding-16 button_chart">
 						<div class="w3-left">
 							<i class="fa fa-eye w3-xxxlarge"></i>
 						</div>
@@ -144,23 +146,29 @@
 							<h3>99</h3>
 						</div>
 						<div class="w3-clear"></div>
-						<h4>Views</h4>
+						<h4>통계</h4>
 					</div>
 				</div>
-				<div class="w3-quarter">
-					<div class="w3-container w3-teal w3-padding-16">
+				<div class="w3-quarter dash_buttons" id="defaultOpen"
+					onclick="openBoard('dash_menu', this)">
+					<div class="w3-container w3-teal w3-padding-16 button_menu">
 						<div class="w3-left">
-							<i class="fa fa-share-alt w3-xxxlarge"></i>
+							<div class="foodList">
+								<img src="${path}/resources/image/foodList.png"
+									style="width: 100%; height: 100%;">
+							</div>
 						</div>
 						<div class="w3-right">
 							<h3>23</h3>
 						</div>
 						<div class="w3-clear"></div>
-						<h4>Shares</h4>
+						<h4>메뉴</h4>
 					</div>
 				</div>
-				<div class="w3-quarter">
-					<div class="w3-container w3-orange w3-text-white w3-padding-16">
+				<div class="w3-quarter dash_buttons"
+					onclick="openBoard('dash_user', this)">
+					<div
+						class="w3-container w3-orange w3-text-white w3-padding-16 button_user">
 						<div class="w3-left">
 							<i class="fa fa-users w3-xxxlarge"></i>
 						</div>
@@ -172,17 +180,29 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<button class="w3-button w3-dark-grey" id="goInsertFood">
 				음식 등록하기 <i class="fa fa-arrow-right"></i>
 			</button>
 
-			<div class="w3-panel">
+			<div class="w3-panel dashBoard" id="dash_alerm"></div>
+
+			<div class="w3-panel dashBoard" id="dash_chart">
 				<div class="w3-row-padding" style="margin: 0 -16px">
 					<div class="w3-third">
-						<h5>Regions</h5>
-						<img src="/w3images/region.jpg" style="width: 100%"
-							alt="Google Regional Map">
+						<c:if test="${shop != null}"> 
+							<c:if test="${shop.getShopQR() == null}">
+								<h5>QR 주소 없음</h5>
+								<img src="${path}/resources/image/no_qr.png" style="width: 100%"
+								alt="QR 주소 없음">
+								<button class="button card-panel waves-effect white" id="makeQR" style="width : 80%;">QR 코드 생성</button>
+							</c:if>
+							<c:if test="${shop.getShopQR() != null}">
+								<h5>등록된 QR 주소</h5>
+								<img src="${path}/resources/image/qrcode.png" style="width: 100%"
+									alt="등록된 QR 주소">
+							</c:if>
+						</c:if>
 					</div>
 					<div class="w3-twothird">
 						<h5>Feeds</h5>
@@ -226,6 +246,64 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="w3-panel dashBoard" id="dash_menu">			
+				<c:forEach items="${foodList}" var="foodList">
+					<div class="product" id="openModal">
+						<img src="${path}/resources/image/${foodList.foodImage[0]}" class="product_picture">
+						<p>${foodList.foodName}</p>
+						<p>${foodList.foodPrice} 원</p>
+					</div>				
+				</c:forEach>
+				
+				<div class="product" id="openModal">
+					<img src="${path}/resources/image/레몬주스_1.png" class="product_picture">
+					<p>레몬주스_1</p>
+					<p>5000 원</p>
+				</div>
+				<div class="product" id="openModal">
+					<img src="${path}/resources/image/레몬주스_2.png" class="product_picture">
+					<p>레몬주스_2</p>
+					<p>5000 원</p>
+				</div>
+				<div class="product" id="openModal">
+					<img src="${path}/resources/image/망고주스_1.png" class="product_picture">
+					<p>망고주스_1</p>
+					<p>5000 원</p>
+				</div>
+				<div class="product" id="openModal">
+					<img src="${path}/resources/image/망고주스2.png" class="product_picture">
+					<p>망고주스_2</p>
+					<p>5000 원</p>
+				</div>
+				<div class="product" id="openModal">
+					<img src="${path}/resources/image/오렌지주스_1.png" class="product_picture">
+					<p>오렌지주스_1</p>
+					<p>5000 원</p>
+				</div>
+				<div class="product" id="openModal">
+					<img src="${path}/resources/image/오렌지주스_2.png" class="product_picture">
+					<p>오렌지주스_2</p>
+					<p>5000 원</p>
+				</div>
+				<div class="product" id="openModal">
+					<img src="${path}/resources/image/세트1.png" class="product_picture">
+					<p>세트1</p>
+					<p>5000 원</p>
+				</div>
+				<div class="product" id="openModal">
+					<img src="${path}/resources/image/세트2.png" class="product_picture">
+					<p>세트2</p>
+					<p>5000 원</p>
+				</div>
+				<div class="product" id="openModal">
+					<img src="${path}/resources/image/세트3.png" class="product_picture">
+					<p>세트3</p>
+					<p>5000 원</p>
+				</div>
+			</div>
+
+			<div class="w3-panel dashBoard" id="dash_user"></div>
 			<hr>
 			<div class="w3-container">
 				<h5>General Stats</h5>
@@ -375,4 +453,27 @@
 	<c:if test="${shop == null}">
 		<button class="button card-panel waves-effect white" id="goAddShop">가게 생성</button>
 	</c:if> 
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="foodModal" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close closeFoodModal"
+					data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">음식 상세 화면</h4>
+			</div>
+			<div class="modal-body bodyFoodModal">
+				<h2><b>테스트중</b></h2>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default closeChatRouteModal"
+					data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+
+	</div>
 </div>

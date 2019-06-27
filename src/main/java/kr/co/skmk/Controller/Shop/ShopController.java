@@ -66,4 +66,12 @@ public class ShopController {
 		model.addAttribute("page", "shop/registerShop.jsp");
 		return "index";
 	}
+	
+	@ResponseBody
+	@RequestMapping (value = "/shop/makeQR", method = RequestMethod.POST)
+	public String makeQR(HttpSession session) throws IOException, Exception {
+				
+		
+		return "아직 미구현";
+	}
 }

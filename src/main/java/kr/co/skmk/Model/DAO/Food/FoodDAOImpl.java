@@ -1,5 +1,7 @@
 package kr.co.skmk.Model.DAO.Food;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -27,9 +29,9 @@ public class FoodDAOImpl implements FoodDAO {
 	}
 
 	@Override
-	public FoodDTO searchFood(FoodDTO dto) {
+	public List<FoodDTO> getFoodList(String shopCode) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("food.getFoodList", shopCode);
 	}
 
 }

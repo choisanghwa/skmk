@@ -22,4 +22,9 @@
 		select max(foodCode)
 		from food where shopCode=#{shopCode}
 	</select>
+	
+	<select id="getFoodList" resultType="foodDto">
+		select * from food
+		where shopCode=#{shopCode}
+	</select>
 </mapper>

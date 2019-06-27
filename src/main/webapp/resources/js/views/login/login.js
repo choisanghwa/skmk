@@ -87,4 +87,22 @@ $(document).ready(function() {
 	$("#cancel-addFood").click(function() {
 		location.href = "./main";
 	});
+	
+	$("#makeQR").click(function() {
+		$.ajax({
+			url : './shop/makeQR',
+				type : 'POST',
+				dataType : "text",
+				success : function(data) {
+					if(data != null) {
+						alert("QR 코드 생성 성공");
+					} else {
+						alert("QR 코드 생성 실패");
+					}
+				},
+				error : function(value) {
+					alert("AJAX Error!");
+				}
+		})
+	});
 });

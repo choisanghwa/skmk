@@ -1,5 +1,7 @@
 package kr.co.skmk.Controller.Login;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
@@ -12,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.skmk.Controller.Index.IndexController;
+import kr.co.skmk.Model.DTO.Food.FoodDTO;
 import kr.co.skmk.Model.DTO.Member.MemberDTO;
 import kr.co.skmk.Model.DTO.Shop.ShopDTO;
+import kr.co.skmk.Service.Food.FoodService;
 import kr.co.skmk.Service.Member.MemberService;
 import kr.co.skmk.Service.Shop.ShopService;
 
@@ -26,6 +30,9 @@ public class LoginController {
 	
 	@Inject
 	ShopService shopService;
+	
+	@Inject
+	FoodService foodService;
 	
 	@RequestMapping(value="/login/registerMember", method=RequestMethod.GET)
 	public String registerMember(Model model) {
@@ -63,6 +70,11 @@ public class LoginController {
 			shop = shopService.searchShop(dto.getMemberMail());// 가게 생성 여부 확인		
 			if(shop != null) {
 				session.setAttribute("shop", shop);
+				
+				List<FoodDTO> foodList = foodService.getFoodList(shop.getShopCode());
+				
+				session.setAttribute("foodList", foodList);
+				
 			} else {
 				
 			}

@@ -11,6 +11,7 @@ public class ShopDTO {
 	private String shopLicense;
 	private String memberMail;
 	private MultipartFile shopLogoFile;
+	private String shopQR;
 	
 	public String getShopCode() {
 		return shopCode;
@@ -53,5 +54,11 @@ public class ShopDTO {
 	}
 	public void setShopLogoFile(MultipartFile shopLogoFile) {
 		this.shopLogoFile = shopLogoFile;
+	}
+	public String getShopQR() {
+		return shopQR;
+	}
+	public void setShopQR(String shopQR) {
+		this.shopQR = shopQR;
 	}
 }

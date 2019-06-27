@@ -1,5 +1,7 @@
 package kr.co.skmk.Service.Food;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -20,9 +22,9 @@ public class FoodServiceImpl implements FoodService {
 	}
 
 	@Override
-	public FoodDTO searchFood(FoodDTO dto) {
+	public List<FoodDTO> getFoodList(String shopCode) {
 		// TODO Auto-generated method stub
-		return null;
+		return foodDao.getFoodList(shopCode);
 	}
 
 }

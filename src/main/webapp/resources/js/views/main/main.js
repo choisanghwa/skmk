@@ -1,4 +1,10 @@
 
+$(document).ready(function(){
+	$(".product").click(function(){
+        $("#foodModal").modal();
+    });
+});
+
 /* 슬라이드 쇼 관련 자바스크립트 */
 var slideIndex = 1;
 showSlides(slideIndex);
@@ -62,4 +68,39 @@ function w3_open() {
 function w3_close() {
 	mySidebar.style.display = "none";
 	overlayBg.style.display = "none";
+}
+
+function openBoard(boardName, elmnt) {
+	var i, dashBoard, dash_buttons;
+
+	var bgColor = boardColor(boardName);
+
+	dashBoard = document.getElementsByClassName("dashBoard");
+	for (i = 0; i < dashBoard.length; i++) {
+		dashBoard[i].style.display = "none";
+	}
+	dash_buttons = document.getElementsByClassName("dash_buttons");
+	for (i = 0; i < dash_buttons.length; i++) {
+		dash_buttons[i].style.backgroundColor = "";
+	}
+	document.getElementById(boardName).style.display = "block";
+	elmnt.style.backgroundColor = color;
+
+}
+
+function boardColor(boardName) {
+	switch (boardName) {
+	case "dash_alerm":
+		return "#F44336";
+		break;
+	case "dash_chart":
+		return "#2196F3";
+		break;
+	case "dash_menu":
+		return "#009688";
+		break;
+	case "dash_user":
+		return "#FF9800";
+		break;
+	}
 }

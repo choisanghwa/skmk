@@ -31,21 +31,40 @@ $(function() {
 			return false;
 		}
 		else {
+			
 			$.ajax({
-				url : '../shop/register',
-				type : 'POST',
-				data : formData,
-				enctype : 'multipart/form-data',
-				processData: false,
-				contentType : false,
-				cache : false,
+				url : '../shop/checkShopCode',
+				type : 'GET',
+				data : {"shopCode" : $("#inputShopCode").val()},
+				
 				dataType : "text",
 				success : function(data) {
-					if(data == 1) {
-						alert("상점 개설을 축하합니다.");
-						location.href = "./successInsertShop";
+					if(data == 0) {
+						$.ajax({
+							url : '../shop/register',
+							type : 'POST',
+							data : formData,
+							enctype : 'multipart/form-data',
+							processData: false,
+							contentType : false,
+							cache : false,
+							dataType : "text",
+							success : function(data) {
+								if(data == 1) {
+									alert("상점 개설을 축하합니다.");
+									location.href = "./successInsertShop";
+								} else if (data == 0) {
+									alert("상점 개설에  실패하였습니다.");
+								} else {
+									alert("개설 중에 에러가 발생하였습니다.");
+								}
+							},
+							error : function(value) {
+								alert("AJAX Error!");
+							}
+						});
 					} else if (data == 0) {
-						alert("상점 개설에  실패하였습니다.");
+						alert("이미 사용중인 URL 주소 입니다. 다시 확인해주십시오.");
 					} else {
 						alert("개설 중에 에러가 발생하였습니다.");
 					}
@@ -56,4 +75,10 @@ $(function() {
 			});
 		}
 	});
+});
+
+$(document).ready(function() {
+	if($('#goLogin').length) {
+		
+	}
 });

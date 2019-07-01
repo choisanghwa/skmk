@@ -33,4 +33,16 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne("member.loginMember", dto);
 	}
 
+	@Override
+	public MemberDTO getUserInfoByMail(String memberMail) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("member.getUserInfoByMail", memberMail);
+	}
+
+	@Override
+	public String getMemberMailByShopCode(String shopCode) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("member.getMemberMailByShopCode", shopCode);
+	}
+
 }

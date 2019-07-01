@@ -5,5 +5,5 @@ import kr.co.skmk.Model.DTO.Shop.ShopDTO;
 public interface ShopService {
 
 	public int insertShop(ShopDTO shop);
-	public ShopDTO searchShop(String memberMail);
+	public ShopDTO searchShop(String shopCode);
 }

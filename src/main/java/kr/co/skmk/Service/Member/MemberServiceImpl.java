@@ -22,4 +22,16 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.loginMember(member);
 	}
 
+	@Override
+	public MemberDTO getUserInfoByMail(String memberMail) {
+		// TODO Auto-generated method stub
+		return memberDao.getUserInfoByMail(memberMail);
+	}
+
+	@Override
+	public String getMemberMailByShopCode(String shopCode) {
+		// TODO Auto-generated method stub
+		return memberDao.getMemberMailByShopCode(shopCode);
+	}
+
 }

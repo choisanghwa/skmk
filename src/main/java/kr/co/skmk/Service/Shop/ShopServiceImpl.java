@@ -18,9 +18,9 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	@Override
-	public ShopDTO searchShop(String memberMail) {
+	public ShopDTO searchShop(String shopCode) {
 		// TODO Auto-generated method stub
-		return shopDao.searchShop(memberMail);
+		return shopDao.searchShop(shopCode);
 	}
 
 }

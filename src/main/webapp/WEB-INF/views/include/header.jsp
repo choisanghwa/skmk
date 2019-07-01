@@ -34,6 +34,7 @@
 <!-- CSS 참조 영역 -->
 	<link rel="stylesheet" href="${path}/resources/css/views/login/login.css">
 	<link rel="stylesheet" href="${path}/resources/css/views/main/main.css">
+	<link rel="stylesheet" href="${path}/resources/css/views/guestBook/guestBook.css">
 
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -45,3 +46,4 @@
 	<script src="${path}/resources/js/views/member/member.js"></script>
 	<script src="${path}/resources/js/views/shop/shop.js"></script>
 	<script src="${path}/resources/js/views/food/food.js"></script>
+	<script src="${path}/resources/js/views/guestBook/guestBook.js"></script>

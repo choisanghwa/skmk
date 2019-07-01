@@ -25,9 +25,9 @@ public class ShopDAOImpl implements ShopDAO {
 	}
 
 	@Override
-	public ShopDTO searchShop(String memberMail) {
+	public ShopDTO searchShop(String shopCode) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("shop.searchShop", memberMail);
+		return sqlSession.selectOne("shop.searchShop", shopCode);
 	}
 
 }

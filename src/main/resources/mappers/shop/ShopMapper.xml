@@ -6,13 +6,12 @@
 
 	<insert id="insertShop">
 		insert into shop(shopCode, shopName, shopAddress, shopLogo, shopLicense, memberMail)
-		values (shopCode.NEXTVAL, #{shopName}, #{shopAddress}, #{shopLogo}, #{shopLicense}, #{memberMail})
+		values (#{shopCode}, #{shopName}, #{shopAddress}, #{shopLogo}, #{shopLicense}, #{memberMail})
 	</insert>
 
 	<select id="searchShop" resultType="shopDto">
 		select *
 		from shop
-		where memberMail= #{memberMail}
+		where shopCode = #{shopCode}
 	</select>
-	
 </mapper>

@@ -1,74 +1,57 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:set var="path" value="${pageContext.request.contextPath}" />
-<!-- <div class="slideshow-container">
-
-	슬라이드 div 객체
-	<div class="mySlides fade">
-		<div class="img" id="picture1">
-			첫번째 슬라이드에 해당하는 이미지 객체
-			<div class="text">플레이스 1</div>
-			첫번째 슬라이드 이미지 안에 들어가 있는 텍스트 객체
-		</div>
-	</div>
-
-	<div class="mySlides fade">
-		<div class="img" id="picture2">
-			<div class="text">플레이스 2</div>
-		</div>
-	</div>
-
-	<div class="mySlides fade">
-		<div class="img" id="picture3">
-			<div class="text">플레이스 3</div>
-		</div>
-	</div>
-
-	화살표 '<'에 해당하는 객체
-	<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-	화살표 '>'에 해당하는 객체
-	<a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-</div>
-<br>
-
-아래 도트 3개, 슬라이드 쇼의 그림을 선택할 수 있다.
-<div style="text-align: center">
-	<span class="dot" onclick="currentSlide(1)"></span>
-	<span class="dot" onclick="currentSlide(2)"></span>
-	<span class="dot" onclick="currentSlide(3)"></span>
-</div>
-
-<br>
-<br>
-<br> -->
+<c:set var="url" value="${url}" />
+<c:set var="isMyShop" value="${isMyShop}" />
 
 <!-- Sidebar/menu -->
+
+<!-- Top menu on small screens -->
+<a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-left" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left"
 	style="z-index: 3; width: 300px;" id="mySidebar">
 	<br>
 	<div class="w3-container w3-row">
 		<div class="w3-col s4">
-			<img src="${path}/resources/image/${member.getMemberImage()}" class="w3-circle w3-margin-right"
-				style="width: 72px">
+			<c:if test="${member != null}">
+				<img src="${path}/resources/image/${member.getMemberImage()}"
+					class="w3-circle w3-margin-right" style="width: 72px">
+			</c:if>
+			<c:if test="${member == null}">
+				<img src="${path}/resources/image/unknown_userImage.png"
+					class="w3-circle w3-margin-right" style="width: 72px">
+			</c:if>		
 		</div>
-		<div class="w3-col s8 w3-bar">
+
+		<div class="w3-col s7 w3-bar">
 			<c:if test="${member != null}">
 				<span><strong>${member.getMemberName()} 님,</strong> 환영합니다.</span>
 			</c:if>
 			<c:if test="${member == null}">
 				<span>로그인이 필요합니다.</span>
-			</c:if>
+			</c:if>			
 			<br>
 			<a href="#"
 				class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a> <a
 				href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
 			<a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
 		</div>
+		
+		<a href="#"
+			class="w3-col s1 w3-bar w3-button w3-padding-16 w3-hide-large" style="position:absolute;"
+			onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i></a>
+		
 		<div class="w3-row s8 w3-bar">
-			<button class="btn waves-effect waves-light" id="logout">로그아웃</button>
+			<c:if test="${member != null}">
+				<button class="btn waves-effect waves-light" id="logout" style="float:right;">로그아웃</button>
+			</c:if>
+			<c:if test="${member == null}">
+				<button class="btn waves-effect waves-light" id="goLogin" style="float:right;">로그인 하기</button>
+			</c:if>		
 		</div>
 	</div>
 	<hr>
@@ -77,9 +60,6 @@
 	</div>
 	<div class="w3-bar-block">
 		<a href="#"
-			class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
-			onclick="w3_close()" title="close menu"><i
-			class="fa fa-remove fa-fw"></i>  Close Menu</a> <a href="#"
 			class="w3-bar-item w3-button w3-padding w3-blue"><i
 			class="fa fa-users fa-fw"></i>  Overview</a> <a href="#"
 			class="w3-bar-item w3-button w3-padding"><i
@@ -104,18 +84,16 @@
 
 
 <div class="contents-wrap">
-
-	<c:if test="${shop != null}">
+	<!-- Overlay effect when opening sidebar on small screens -->
+	<div class="w3-overlay w3-hide-large w3-animate-opacity"
+		onclick="w3_close()" style="cursor: pointer" title="close side menu"
+		id="myOverlay"></div>
 	
-		<!-- Overlay effect when opening sidebar on small screens -->
-		<div class="w3-overlay w3-hide-large w3-animate-opacity"
-			onclick="w3_close()" style="cursor: pointer" title="close side menu"
-			id="myOverlay"></div>
-
-		<!-- !PAGE CONTENT! -->
-		<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
-
-			<!-- Header -->
+	<!-- !PAGE CONTENT! -->
+	<div class="w3-main" style="margin-left: 300px;">
+	
+	<c:if test="${shop != null}">
+		<c:if test="${member == null || (member != null && isMyShop ne '1')}"> <!-- 일부 -->
 			<header class="w3-container" style="padding-top: 22px">
 				<h5>
 					<b><i class="fa fa-dashboard"></i> My Dashboard</b>
@@ -123,32 +101,6 @@
 			</header>
 
 			<div class="w3-row-padding w3-margin-bottom">
-				<div class="w3-quarter dash_buttons"
-					onclick="openBoard('dash_alerm', this)">
-					<div class="w3-container w3-red w3-padding-16 button_alerm">
-						<div class="w3-left">
-							<i class="fa fa-comment w3-xxxlarge"></i>
-						</div>
-						<div class="w3-right">
-							<h3>52</h3>
-						</div>
-						<div class="w3-clear"></div>
-						<h4>Messages</h4>
-					</div>
-				</div>
-				<div class="w3-quarter dash_buttons"
-					onclick="openBoard('dash_chart', this)">
-					<div class="w3-container w3-blue w3-padding-16 button_chart">
-						<div class="w3-left">
-							<i class="fa fa-eye w3-xxxlarge"></i>
-						</div>
-						<div class="w3-right">
-							<h3>99</h3>
-						</div>
-						<div class="w3-clear"></div>
-						<h4>통계</h4>
-					</div>
-				</div>
 				<div class="w3-quarter dash_buttons" id="defaultOpen"
 					onclick="openBoard('dash_menu', this)">
 					<div class="w3-container w3-teal w3-padding-16 button_menu">
@@ -159,7 +111,7 @@
 							</div>
 						</div>
 						<div class="w3-right">
-							<h3>23</h3>
+							<h3>${fn:length(foodList)}</h3>
 						</div>
 						<div class="w3-clear"></div>
 						<h4>메뉴</h4>
@@ -173,80 +125,13 @@
 							<i class="fa fa-users w3-xxxlarge"></i>
 						</div>
 						<div class="w3-right">
-							<h3>50</h3>
+							<h3>${fn:length(guestList)}</h3>
 						</div>
 						<div class="w3-clear"></div>
 						<h4>Users</h4>
 					</div>
 				</div>
 			</div>
-
-			<button class="w3-button w3-dark-grey" id="goInsertFood">
-				음식 등록하기 <i class="fa fa-arrow-right"></i>
-			</button>
-
-			<div class="w3-panel dashBoard" id="dash_alerm"></div>
-
-			<div class="w3-panel dashBoard" id="dash_chart">
-				<div class="w3-row-padding" style="margin: 0 -16px">
-					<div class="w3-third">
-						<c:if test="${shop != null}"> 
-							<c:if test="${shop.getShopQR() == null}">
-								<h5>QR 주소 없음</h5>
-								<img src="${path}/resources/image/no_qr.png" style="width: 100%"
-								alt="QR 주소 없음">
-								<button class="button card-panel waves-effect white" id="makeQR" style="width : 80%;">QR 코드 생성</button>
-							</c:if>
-							<c:if test="${shop.getShopQR() != null}">
-								<h5>등록된 QR 주소</h5>
-								<img src="${path}/resources/image/qrcode.png" style="width: 100%"
-									alt="등록된 QR 주소">
-							</c:if>
-						</c:if>
-					</div>
-					<div class="w3-twothird">
-						<h5>Feeds</h5>
-						<table class="w3-table w3-striped w3-white">
-							<tr>
-								<td><i class="fa fa-user w3-text-blue w3-large"></i></td>
-								<td>New record, over 90 views.</td>
-								<td><i>10 mins</i></td>
-							</tr>
-							<tr>
-								<td><i class="fa fa-bell w3-text-red w3-large"></i></td>
-								<td>Database error.</td>
-								<td><i>15 mins</i></td>
-							</tr>
-							<tr>
-								<td><i class="fa fa-users w3-text-yellow w3-large"></i></td>
-								<td>New record, over 40 users.</td>
-								<td><i>17 mins</i></td>
-							</tr>
-							<tr>
-								<td><i class="fa fa-comment w3-text-red w3-large"></i></td>
-								<td>New comments.</td>
-								<td><i>25 mins</i></td>
-							</tr>
-							<tr>
-								<td><i class="fa fa-bookmark w3-text-blue w3-large"></i></td>
-								<td>Check transactions.</td>
-								<td><i>28 mins</i></td>
-							</tr>
-							<tr>
-								<td><i class="fa fa-laptop w3-text-red w3-large"></i></td>
-								<td>CPU overload.</td>
-								<td><i>35 mins</i></td>
-							</tr>
-							<tr>
-								<td><i class="fa fa-share-alt w3-text-green w3-large"></i></td>
-								<td>New shares.</td>
-								<td><i>39 mins</i></td>
-							</tr>
-						</table>
-					</div>
-				</div>
-			</div>
-
 			<div class="w3-panel dashBoard" id="dash_menu">			
 				<c:forEach items="${foodList}" var="foodList">
 					<div class="product" id="openModal">
@@ -303,156 +188,414 @@
 				</div>
 			</div>
 
-			<div class="w3-panel dashBoard" id="dash_user"></div>
-			<hr>
-			<div class="w3-container">
-				<h5>General Stats</h5>
-				<p>New Visitors</p>
-				<div class="w3-grey">
-					<div class="w3-container w3-center w3-padding w3-green"
-						style="width: 25%">+25%</div>
-				</div>
-
-				<p>New Users</p>
-				<div class="w3-grey">
-					<div class="w3-container w3-center w3-padding w3-orange"
-						style="width: 50%">50%</div>
-				</div>
-
-				<p>Bounce Rate</p>
-				<div class="w3-grey">
-					<div class="w3-container w3-center w3-padding w3-red"
-						style="width: 75%">75%</div>
-				</div>
-			</div>
-			<hr>
-
-			<div class="w3-container">
-				<h5>Countries</h5>
-				<table
-					class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
-					<tr>
-						<td>United States</td>
-						<td>65%</td>
-					</tr>
-					<tr>
-						<td>UK</td>
-						<td>15.7%</td>
-					</tr>
-					<tr>
-						<td>Russia</td>
-						<td>5.6%</td>
-					</tr>
-					<tr>
-						<td>Spain</td>
-						<td>2.1%</td>
-					</tr>
-					<tr>
-						<td>India</td>
-						<td>1.9%</td>
-					</tr>
-					<tr>
-						<td>France</td>
-						<td>1.5%</td>
-					</tr>
-				</table>
-				<br>
-				<button class="w3-button w3-dark-grey">
-					More Countries  <i class="fa fa-arrow-right"></i>
-				</button>
-			</div>
-			<hr>
-			<div class="w3-container">
-				<h5>Recent Users</h5>
-				<ul class="w3-ul w3-card-4 w3-white">
-					<li class="w3-padding-16"><img src="/w3images/avatar2.png"
-						class="w3-left w3-circle w3-margin-right" style="width: 35px">
-						<span class="w3-xlarge">Mike</span><br></li>
-					<li class="w3-padding-16"><img src="/w3images/avatar5.png"
-						class="w3-left w3-circle w3-margin-right" style="width: 35px">
-						<span class="w3-xlarge">Jill</span><br></li>
-					<li class="w3-padding-16"><img src="/w3images/avatar6.png"
-						class="w3-left w3-circle w3-margin-right" style="width: 35px">
-						<span class="w3-xlarge">Jane</span><br></li>
-				</ul>
-			</div>
-			<hr>
-
-			<div class="w3-container">
-				<h5>Recent Comments</h5>
-				<div class="w3-row">
-					<div class="w3-col m2 text-center">
-						<img class="w3-circle" src="/w3images/avatar3.png"
-							style="width: 96px; height: 96px">
+			<div class="w3-panel dashBoard" id="dash_user">
+				<div class="w3-container">
+					<h3>방명록</h3>
+					<div id ="contentLoad">
+						<ul class="w3-ul w3-card-4 w3-white contentList">
+							<c:forEach items="${guestList}" var="guestList" varStatus="status">
+								<li class="w3-padding-16 w3-row contentItem" style="text-align:left;">
+									<span class="w3-left w3-col s2 w3-large" style="margin-left:30px;">${guestList.guestBookTitle}</span>
+									<span class="w3-opacity w3-right" style="margin-left:20px;">${guestList.guestBookTime}</span>
+									<p class="guestContent w3-right w3-col s9" style="margin-left:20px;">${guestList.guestBookContent}</p>				
+									<br>
+								</li>			
+							</c:forEach>
+						
+							<li class="w3-padding-16 loadMore" id="loadMore">
+								<span class="w3-xlarge loadMore">▼ 더 보기</span><br></li>
+						</ul>
 					</div>
-					<div class="w3-col m10 w3-container">
-						<h4>
-							John <span class="w3-opacity w3-medium">Sep 29, 2014, 9:12
-								PM</span>
-						</h4>
-						<p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum
-							dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua.</p>
+					<br>
+					<br>
+					<form id="guestBookForm">
+						<div class="form-group form-inline" style="float:left;">	
+							<label for="commentTitle" id="commentTitle">제목  : </label>
+							<input class="form-control" type="text" minlength="2" maxlength="20" placeholder="2~ 20자  이내  입력" name="GuestBookTitle">
+						</div>				
+							<textarea class="form-control" rows="8" minlength="2" maxlength="500" placeholder="최대  500자 이내 입력" name="GuestBookContent"></textarea>
+							<br>
+							<button class="btn btn-primary form-control" style="float:right; width:150px;"id="submit_guestBook">
+								<i class="fa fa-check spaceLeft"></i>등록 하기
+							</button>
+					</form>
+
+				</div>
+			</div>
+		</c:if>
+		<c:if test="${member != null }">
+			<c:if test="${url eq 'main' || (url ne 'main' && isMyShop eq '1')}">		
+					<!-- Header -->
+					<header class="w3-container" style="padding-top: 22px">
+						<h5>
+							<b><i class="fa fa-dashboard"></i> My Dashboard</b>
+						</h5>
+					</header>
+		
+					<div class="w3-row-padding w3-margin-bottom">
+						<div class="w3-quarter dash_buttons"
+							onclick="openBoard('dash_alerm', this)">
+							<div class="w3-container w3-red w3-padding-16 button_alerm">
+								<div class="w3-left">
+									<i class="fa fa-comment w3-xxxlarge"></i>
+								</div>
+								<div class="w3-right">
+									<h3>0</h3>
+								</div>
+								<div class="w3-clear"></div>
+								<h4>알림</h4>
+							</div>
+						</div>
+						<div class="w3-quarter dash_buttons"
+							onclick="openBoard('dash_chart', this)">
+							<div class="w3-container w3-blue w3-padding-16 button_chart">
+								<div class="w3-left">
+									<i class="fa fa-eye w3-xxxlarge"></i>
+								</div>
+								<div class="w3-right">
+									<h3>0</h3>
+								</div>
+								<div class="w3-clear"></div>
+								<h4>통계</h4>
+							</div>
+						</div>
+						<div class="w3-quarter dash_buttons" id="defaultOpen"
+							onclick="openBoard('dash_menu', this)">
+							<div class="w3-container w3-teal w3-padding-16 button_menu">
+								<div class="w3-left">
+									<div class="foodList">
+										<img src="${path}/resources/image/foodList.png"
+											style="width: 100%; height: 100%;">
+									</div>
+								</div>
+								<div class="w3-right">
+									<h3>${fn:length(foodList)}</h3>
+								</div>
+								<div class="w3-clear"></div>
+								<h4>메뉴</h4>
+							</div>
+						</div>
+						<div class="w3-quarter dash_buttons"
+							onclick="openBoard('dash_user', this)">
+							<div
+								class="w3-container w3-orange w3-text-white w3-padding-16 button_user">
+								<div class="w3-left">
+									<i class="fa fa-users w3-xxxlarge"></i>
+								</div>
+								<div class="w3-right">
+									<h3>${fn:length(guestList)}</h3>
+								</div>
+								<div class="w3-clear"></div>
+								<h4>Users</h4>
+							</div>
+						</div>
+					</div>
+		
+					<button class="w3-button w3-dark-grey" id="goInsertFood">
+						음식 등록하기 <i class="fa fa-arrow-right"></i>
+					</button>
+		
+					<div class="w3-panel dashBoard" id="dash_alerm">
+						<h2><b>현재 기능 미 구현되어 있음.</b></h2>
+					</div>
+		
+					<div class="w3-panel dashBoard" id="dash_chart">
+						<div class="w3-row-padding" style="margin: 0 -16px">
+							<div class="w3-third">
+								<c:if test="${shop != null}"> 
+									<c:if test="${shop.getShopQR() == null}">
+										<h5><b>QR 주소 없음</b></h5>
+										<img src="${path}/resources/image/no_qr.png" style="width: 100px;"
+										alt="QR 주소 없음" id="qr_image">
+										<button class="button card-panel waves-effect white" id="makeQR" style="width : 80%;">QR 코드 생성</button>
+									</c:if>
+									<c:if test="${shop.getShopQR() != null}">
+										<h5><b>등록된 QR 주소</b></h5>
+										<img src="${path}/resources/image/qrcode.png" style="width: 100%"
+											alt="등록된 QR 주소">
+									</c:if>
+								</c:if>
+							</div>
+							<div class="w3-twothird">
+								<h5><b>통계 자료 (미구현 됨)</h5>
+								<table class="w3-table w3-striped w3-white">
+									<tr>
+										<td><i class="fa fa-user w3-text-blue w3-large"></i></td>
+										<td>하루에 방문한 고객 수</td>
+										<td><i>XX 명</i></td>
+									</tr>
+									<tr>
+										<td><i class="fa fa-bell w3-text-red w3-large"></i></td>
+										<td>하루에 발생한 주문 수</td>
+										<td><i>XX 건</i></td>
+									</tr>
+									<tr>
+										<td><i class="fa fa-money w3-text-yellow w3-large"></i></td>
+										<td>일일 매출 현황</td>
+										<td><i> XXXX 원</i></td>
+									</tr>
+									<tr>
+										<td><i class="fa fa-external-link-square w3-text-red w3-large"></i></td>
+										<td>전달 대비 매출 증감세.</td>
+										<td><i>XX % 증가</i></td>
+									</tr>
+									<tr>
+										<td><i class="fa fa-pie-chart w3-text-blue w3-large"></i></td>
+										<td>월간 품목별 최다 주문 건</td>
+										<td><i>제품 명 / XX 건 (전체 OO.O%)</i></td>
+									</tr>
+									<tr>
+										<td><i class="fa fa-heart w3-text-red w3-large"></i></td>
+										<td>월간 긍정 평가 기록 횟수.</td>
+										<td><i>XX 건</i></td>
+									</tr>
+									<tr>
+										<td><i class="fa fa-users w3-text-green w3-large"></i></td>
+										<td>월간 방명록 기록 횟수</td>
+										<td><i>XX 건</i></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+		
+					<div class="w3-panel dashBoard" id="dash_menu">			
+						<c:forEach items="${foodList}" var="foodList">
+							<div class="product" id="openModal">
+								<img src="${path}/resources/image/${foodList.foodImage[0]}" class="product_picture">
+								<p>${foodList.foodName}</p>
+								<p>${foodList.foodPrice} 원</p>
+							</div>				
+						</c:forEach>
+						
+						<div class="product" id="openModal">
+							<img src="${path}/resources/image/레몬주스_1.png" class="product_picture">
+							<p>레몬주스_1</p>
+							<p>5000 원</p>
+						</div>
+						<div class="product" id="openModal">
+							<img src="${path}/resources/image/레몬주스_2.png" class="product_picture">
+							<p>레몬주스_2</p>
+							<p>5000 원</p>
+						</div>
+						<div class="product" id="openModal">
+							<img src="${path}/resources/image/망고주스_1.png" class="product_picture">
+							<p>망고주스_1</p>
+							<p>5000 원</p>
+						</div>
+						<div class="product" id="openModal">
+							<img src="${path}/resources/image/망고주스2.png" class="product_picture">
+							<p>망고주스_2</p>
+							<p>5000 원</p>
+						</div>
+						<div class="product" id="openModal">
+							<img src="${path}/resources/image/오렌지주스_1.png" class="product_picture">
+							<p>오렌지주스_1</p>
+							<p>5000 원</p>
+						</div>
+						<div class="product" id="openModal">
+							<img src="${path}/resources/image/오렌지주스_2.png" class="product_picture">
+							<p>오렌지주스_2</p>
+							<p>5000 원</p>
+						</div>
+						<div class="product" id="openModal">
+							<img src="${path}/resources/image/세트1.png" class="product_picture">
+							<p>세트1</p>
+							<p>5000 원</p>
+						</div>
+						<div class="product" id="openModal">
+							<img src="${path}/resources/image/세트2.png" class="product_picture">
+							<p>세트2</p>
+							<p>5000 원</p>
+						</div>
+						<div class="product" id="openModal">
+							<img src="${path}/resources/image/세트3.png" class="product_picture">
+							<p>세트3</p>
+							<p>5000 원</p>
+						</div>
+					</div>
+		
+					<div class="w3-panel dashBoard" id="dash_user">
+						<div class="w3-container">
+							<h3>방명록</h3>
+							<div id ="contentLoad">
+								<ul class="w3-ul w3-card-4 w3-white contentList">
+									<c:forEach items="${guestList}" var="guestList" varStatus="status">
+										<li class="w3-padding-16 w3-row contentItem" style="text-align:left;">
+											<span class="w3-left w3-col s2 w3-large" style="margin-left:30px;">${guestList.guestBookTitle}</span>
+											<span class="w3-opacity w3-right" style="margin-left:20px;">${guestList.guestBookTime}</span>
+											<p class="guestContent w3-right w3-col s9" style="margin-left:20px;">${guestList.guestBookContent}</p>				
+											<br>
+										</li>			
+									</c:forEach>
+								
+									<li class="w3-padding-16 loadMore" id="loadMore">
+										<span class="w3-xlarge loadMore">▼ 더 보기</span><br></li>
+								</ul>
+							</div>
+							<br>
+							<br>
+							<form id="guestBookForm">
+								<div class="form-group form-inline" style="float:left;">	
+									<label for="commentTitle" id="commentTitle">제목  : </label>
+									<input class="form-control" type="text" minlength="2" maxlength="20" placeholder="2~ 20자  이내  입력" name="GuestBookTitle">
+								</div>				
+									<textarea class="form-control" rows="8" minlength="2" maxlength="500" placeholder="최대  500자 이내 입력" name="GuestBookContent"></textarea>
+									<br>
+									<button class="btn btn-primary form-control" style="float:right; width:150px;"id="submit_guestBook">
+										<i class="fa fa-check spaceLeft"></i>등록 하기
+									</button>
+							</form>
+		
+						</div>
+					</div>
+					<hr>
+					<div class="w3-container">
+						<h5><b>월간 그래프 (미구현)</b></h5>
 						<br>
-					</div>
-				</div>
-
-				<div class="w3-row">
-					<div class="w3-col m2 text-center">
-						<img class="w3-circle" src="/w3images/avatar1.png"
-							style="width: 96px; height: 96px">
-					</div>
-					<div class="w3-col m10 w3-container">
-						<h4>
-							Bo <span class="w3-opacity w3-medium">Sep 28, 2014, 10:15
-								PM</span>
-						</h4>
-						<p>Sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
+						<p><b>신규 주문 비율</b></p>
+						<div class="w3-grey">
+							<div class="w3-container w3-center w3-padding w3-green"
+								style="width: 25%">+25%</div>
+						</div>
 						<br>
+						<p><b>신규 고객 주문 비율</b></p>
+						<div class="w3-grey">
+							<div class="w3-container w3-center w3-padding w3-orange"
+								style="width: 50%">50%</div>
+						</div>
+						<br>
+						<p><b>기존 고객 주문 비율</b></p>
+						<div class="w3-grey">
+							<div class="w3-container w3-center w3-padding w3-red"
+								style="width: 75%">75%</div>
+						</div>
 					</div>
-				</div>
-			</div>
-			<br>
-			<div class="w3-container w3-dark-grey w3-padding-32">
-				<div class="w3-row">
-					<div class="w3-container w3-third">
-						<h5 class="w3-bottombar w3-border-green">Demographic</h5>
-						<p>Language</p>
-						<p>Country</p>
-						<p>City</p>
+					<hr>
+		
+					<div class="w3-container">
+						<h5><b>품목별 판매 수익 현황 그래프 (미구현)</b></h5>
+						<table
+							class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+							<tr>
+								<td>XXX</td>
+								<td>65%</td>
+							</tr>
+							<tr>
+								<td>ㅁㅁㅁ</td>
+								<td>15.7%</td>
+							</tr>
+							<tr>
+								<td>OOO</td>
+								<td>5.6%</td>
+							</tr>
+							<tr>
+								<td>△△△</td>
+								<td>2.1%</td>
+							</tr>
+							<tr>
+								<td>@@@</td>
+								<td>1.9%</td>
+							</tr>
+							<tr>
+								<td>☆☆☆</td>
+								<td>1.5%</td>
+							</tr>
+						</table>
+						<br>
+						<button class="w3-button w3-dark-grey">
+							전체 수익 현황 (미구현)  <i class="fa fa-arrow-right"></i>
+						</button>
 					</div>
-					<div class="w3-container w3-third">
-						<h5 class="w3-bottombar w3-border-red">System</h5>
-						<p>Browser</p>
-						<p>OS</p>
-						<p>More</p>
-					</div>
-					<div class="w3-container w3-third">
-						<h5 class="w3-bottombar w3-border-orange">Target</h5>
-						<p>Users</p>
-						<p>Active</p>
-						<p>Geo</p>
-						<p>Interests</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- Footer -->
-			<footer class="w3-container w3-padding-16 w3-light-grey">
-				<h4>FOOTER</h4>
-				<p>
-					Powered by <a href="https://www.w3schools.com/w3css/default.asp"
-						target="_blank">w3.css</a>
-				</p>
-			</footer>
-
-			<!-- End page content -->
-		</div>
-	</c:if>        
+					<hr>
+			</c:if>
+		</c:if>	
+	</c:if>
+	
 	<c:if test="${shop == null}">
-		<button class="button card-panel waves-effect white" id="goAddShop">가게 생성</button>
-	</c:if> 
+		<c:if test="${member != null && url eq 'main'}">
+			<img src="${path}/resources/image/no_shop.png">
+			<h2>현재 상점이 개설되지 않았습니다.</h2>
+			<button class="button card-panel waves-effect white" id="goAddShop">가게 생성</button>
+		</c:if>
+		<c:if test="${url ne 'main'}">
+			<img src="${path}/resources/image/no_url.png">
+			<h2>상점이 개설되지 않았거나 올바른 주소가 아닙니다.</h2>
+			<button class="button card-panel waves-effect white" onclick="main()">돌아 가기</button>
+		</c:if>
+	</c:if>
+	        
+			<div class="w3-container">
+			<h5>만든 사람들</h5>
+			<div class="w3-row">
+				<div class="w3-col m2 text-center">
+					<img class="w3-circle" src="${path}/resources/image/koo.png"
+						style="width: 96px; height: 96px">
+				</div>
+				<div class="w3-col m10 w3-container" style="text-align:left;">
+					<h4>
+						구 본 일 <span class="w3-opacity w3-medium"> 2019년 6월 30일</span>
+					</h4>
+					<p>
+						2018년 2월 : 영진전문대학 컴퓨터정보계열 졸업<br>
+						2017년 10월  - 2018년 12월 : ㈜토탈소프트뱅크 - 응용 소프트웨어 개발직 근무<br>
+						2019년 6월 - : 2인 프로젝트 'SKMK - Social Key, Mobile Kiosk' 개발 참여
+					</p>
+					<br>
+				</div>
+			</div>
+	
+			<div class="w3-row">
+				<div class="w3-col m2 text-center">
+					<img class="w3-circle" src="${path}/resources/image/choi.png"
+						style="width: 96px; height: 96px">
+				</div>
+				<div class="w3-col m10 w3-container" style="text-align:left;">
+					<h4>
+						최 상 화 <span class="w3-opacity w3-medium"> 2019년 6월 30일</span>
+					</h4>
+					<p>
+						2018년 2월 : 영진전문대학 컴퓨터정보계열 졸업<br>
+						2017년 10월 - 2018년 12월 : 한국건강관리협회 대구경북지역 전산직 근무<br>
+						2019년 6월 - : 2인 프로젝트 'SKMK - Social Key, Mobile Kiosk' 개발 참여
+					</p>
+					<br>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="w3-container w3-dark-grey w3-padding-32">
+			<div class="w3-row">
+				<div class="w3-container w3-third">
+					<h5 class="w3-bottombar w3-border-green">기 획</h5>
+					<p>구 본 일</p>
+					<p>최 상 화</p>
+				</div>
+				<div class="w3-container w3-third">
+					<h5 class="w3-bottombar w3-border-red">개 발</h5>
+					<p>구 본 일</p>
+					<p>최 상 화</p>
+				</div>
+				<div class="w3-container w3-third">
+					<h5 class="w3-bottombar w3-border-orange">디 자 인</h5>
+					<p>구 본 일</p>
+					<p>최 상 화</p>
+				</div>
+			</div>
+		</div>
+	
+		<!-- Footer -->
+		<footer class="w3-container w3-padding-16 w3-light-grey">
+			<h4>본 홈페이지는 상업적인 용도의 홈페이지가 아닙니다.</h4>
+			<p>
+				Copyright by SKMK
+			</p>
+		</footer>
+	
+		<!-- End page content -->
+	</div>
+	
+
 </div>
 
 

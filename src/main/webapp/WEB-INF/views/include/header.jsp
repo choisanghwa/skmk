@@ -10,7 +10,7 @@
 
 <!-- 기본 파일 참조 -->
 	<script src="${path}/resources/js/jquery/jquery-3.4.1.min.js"></script>
-	<link rel="stylesheet" href="${path}/resources/css/views/basic.css">
+	<link rel="stylesheet" href="${path}/resources/css/basic.css">
 
 <!-- 부트스트랩 & 메터리얼 참조 (둘다 동시에 쓰면 충돌 발생함) -->
 <c:choose>
@@ -35,7 +35,8 @@
 	<link rel="stylesheet" href="${path}/resources/css/views/login/login.css">
 	<link rel="stylesheet" href="${path}/resources/css/views/main/main.css">
 	<link rel="stylesheet" href="${path}/resources/css/views/guestBook/guestBook.css">
-
+	<link rel="stylesheet" href="${path}/resources/css/views/food/food.css">
+	
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

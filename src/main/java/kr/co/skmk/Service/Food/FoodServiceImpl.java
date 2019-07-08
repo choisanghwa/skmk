@@ -1,5 +1,6 @@
 package kr.co.skmk.Service.Food;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,7 +25,9 @@ public class FoodServiceImpl implements FoodService {
 	@Override
 	public List<FoodDTO> getFoodList(String shopCode) {
 		// TODO Auto-generated method stub
-		return foodDao.getFoodList(shopCode);
+		List<FoodDTO> list = foodDao.getFoodList(shopCode);
+		list.forEach(a -> a.setFoodImage(foodDao.getFoodImage(a.getFoodCode())));
+		return list;
 	}
 
 }

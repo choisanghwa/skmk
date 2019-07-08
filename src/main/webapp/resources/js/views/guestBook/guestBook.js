@@ -1,3 +1,12 @@
+function CheckStringEmpty(value) {
+	if (value == "" || value == null || value == undefined ||
+			( value != null && typeof value == "object" && !Object.keys(value).length )) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 $(window).on('load', function () {
     load('#contentLoad', '1');
     $("#loadMore").on("click", function () {
@@ -22,9 +31,29 @@ $(function() {
 	
 	$("#submit_guestBook").click(function(e) {
 		e.preventDefault();
-		var formData = new FormData($('#guestBookForm')[0]);
-		
-		
+		addGuestBook();
+	});
+
+	$("#guestContentTitle").keydown(function(key) {
+	    if (key.keyCode == 13) {
+	        addGuestBook();
+	    }
+	});
+
+	$("#guestContentContent").keydown(function(key) {
+	    if (key.keyCode == 13) {
+	    	addGuestBook();
+	    }
+	});
+});
+
+function addGuestBook() {
+	var formData = new FormData($('#guestBookForm')[0]);
+	if(CheckStringEmpty($("#guestBookTitle").val())) {
+		alert("닉네임을 입력해 주세요.");
+	} else if (CheckStringEmpty($("#guestBookContent").val())) {
+		alert("내용을 입력해 주세요.");
+	} else {
 		$.ajax({
 			url : './guestBook/register',
 			type : 'POST',
@@ -42,10 +71,13 @@ $(function() {
 						"</p><br></li>");
 				var count = $(".button_user h3").text();
 				$(".button_user h3").text(parseInt(count) + 1);
+
+				$("#guestBookTitle").val('');
+				$("#guestBookContent").val('');
 			},
 			error : function(value) {
 				alert("AJAX Error!");
 			}
 		});
-	});
-});
+	}
+}

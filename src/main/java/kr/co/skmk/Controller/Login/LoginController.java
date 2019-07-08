@@ -69,12 +69,7 @@ public class LoginController {
 				
 		if(loginMember != null) {
 			
-			if (loginMember.getMemberImage() == null) {
-				loginMember.setMemberImage("./resources/image/unknown_userImage.png");
-			}
-			else {
-				loginMember.setMemberImage("member/" + loginMember.getMemberImage());
-			}
+			loginMember.setMemberImage(loginMember.getMemberImage());
 			session.setAttribute("status","success");
 			session.setAttribute("member", loginMember);
 			session.setAttribute("url", loginMember.getMemberMail().substring(0, loginMember.getMemberMail().indexOf("@")));

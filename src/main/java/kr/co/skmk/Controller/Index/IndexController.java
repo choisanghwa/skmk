@@ -26,6 +26,7 @@ public class IndexController {
 	public static String FILE_MEMBER_PATH;
 	public static String FILE_SHOP_PATH;
 	public static String FILE_FOOD_PATH;
+	public static String FILE_QR_PATH;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Locale locale, Model model, HttpServletRequest request) {		

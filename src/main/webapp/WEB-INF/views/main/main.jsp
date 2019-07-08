@@ -10,7 +10,7 @@
 <!-- Sidebar/menu -->
 
 <!-- Top menu on small screens -->
-<a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-left" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+<a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-left slide_button" onclick="w3_open()"><i class="fa fa-bars"></i></a>
 
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left"
 	style="z-index: 3; width: 300px;" id="mySidebar">
@@ -22,7 +22,7 @@
 					class="w3-circle w3-margin-right" style="width: 72px">
 			</c:if>
 			<c:if test="${member == null}">
-				<img src="${path}/resources/image/unknown_userImage.png"
+				<img src="${path}/resources/image/member/unknown_userImage.png"
 					class="w3-circle w3-margin-right" style="width: 72px">
 			</c:if>		
 		</div>
@@ -101,7 +101,7 @@
 			</header>
 
 			<div class="w3-row-padding w3-margin-bottom">
-				<div class="w3-quarter dash_buttons" id="defaultOpen"
+				<div class="w3-half dash_buttons"
 					onclick="openBoard('dash_menu', this)">
 					<div class="w3-container w3-teal w3-padding-16 button_menu">
 						<div class="w3-left">
@@ -117,7 +117,7 @@
 						<h4>메뉴</h4>
 					</div>
 				</div>
-				<div class="w3-quarter dash_buttons"
+				<div class="w3-half dash_buttons"
 					onclick="openBoard('dash_user', this)">
 					<div
 						class="w3-container w3-orange w3-text-white w3-padding-16 button_user">
@@ -132,7 +132,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="w3-panel dashBoard" id="dash_menu">			
+			<div class="w3-panel dashBoard" id="dash_menu" style="display:block;">			
 				<c:forEach items="${foodList}" var="foodList">
 					<div class="product" id="openModal">
 						<img src="${path}/resources/image/${foodList.foodImage[0]}" class="product_picture">
@@ -211,15 +211,14 @@
 					<form id="guestBookForm">
 						<div class="form-group form-inline" style="float:left;">	
 							<label for="commentTitle" id="commentTitle">제목  : </label>
-							<input class="form-control" type="text" minlength="2" maxlength="20" placeholder="2~ 20자  이내  입력" name="GuestBookTitle">
+							<input class="form-control" type="text" minlength="2" maxlength="20" placeholder="2~ 20자  이내  입력" name="GuestBookTitle" id="guestBookTitle">
 						</div>				
-							<textarea class="form-control" rows="8" minlength="2" maxlength="500" placeholder="최대  500자 이내 입력" name="GuestBookContent"></textarea>
-							<br>
-							<button class="btn btn-primary form-control" style="float:right; width:150px;"id="submit_guestBook">
-								<i class="fa fa-check spaceLeft"></i>등록 하기
-							</button>
+						<textarea class="form-control" rows="8" minlength="2" maxlength="500" placeholder="최대  500자 이내 입력" name="GuestBookContent" id="guestBookContent"></textarea>
+						<br>
+						<button class="btn btn-primary form-control" style="float:right; width:150px;"id="submit_guestBook">
+							<i class="fa fa-check spaceLeft"></i>등록 하기
+						</button>
 					</form>
-
 				</div>
 			</div>
 		</c:if>
@@ -259,7 +258,7 @@
 								<h4>통계</h4>
 							</div>
 						</div>
-						<div class="w3-quarter dash_buttons" id="defaultOpen"
+						<div class="w3-quarter dash_buttons"
 							onclick="openBoard('dash_menu', this)">
 							<div class="w3-container w3-teal w3-padding-16 button_menu">
 								<div class="w3-left">
@@ -299,13 +298,13 @@
 						<h2><b>현재 기능 미 구현되어 있음.</b></h2>
 					</div>
 		
-					<div class="w3-panel dashBoard" id="dash_chart">
-						<div class="w3-row-padding" style="margin: 0 -16px">
+					<div class="w3-panel dashBoard" id="dash_chart" style="display:block;">
+						<div class="w3-row-padding" style="margin: 0 -16px;">
 							<div class="w3-third">
 								<c:if test="${shop != null}"> 
 									<c:if test="${shop.getShopQR() == null}">
 										<h5><b>QR 주소 없음</b></h5>
-										<img src="${path}/resources/image/no_qr.png" style="width: 100px;"
+										<img src="${path}/resources/image/qr/unknown_shopQR.png" style="width: 100px;"
 										alt="QR 주소 없음" id="qr_image">
 										<button class="button card-panel waves-effect white" id="makeQR" style="width : 80%;">QR 코드 생성</button>
 									</c:if>
@@ -317,7 +316,7 @@
 								</c:if>
 							</div>
 							<div class="w3-twothird">
-								<h5><b>통계 자료 (미구현 됨)</h5>
+								<h5><b>통계 자료 (미구현 됨)</b></h5>
 								<table class="w3-table w3-striped w3-white">
 									<tr>
 										<td><i class="fa fa-user w3-text-blue w3-large"></i></td>
@@ -438,13 +437,13 @@
 							<form id="guestBookForm">
 								<div class="form-group form-inline" style="float:left;">	
 									<label for="commentTitle" id="commentTitle">제목  : </label>
-									<input class="form-control" type="text" minlength="2" maxlength="20" placeholder="2~ 20자  이내  입력" name="GuestBookTitle">
+									<input class="form-control" type="text" minlength="2" maxlength="20" placeholder="2~ 20자  이내  입력" name="GuestBookTitle" id="guestBookTitle">
 								</div>				
-									<textarea class="form-control" rows="8" minlength="2" maxlength="500" placeholder="최대  500자 이내 입력" name="GuestBookContent"></textarea>
-									<br>
-									<button class="btn btn-primary form-control" style="float:right; width:150px;"id="submit_guestBook">
-										<i class="fa fa-check spaceLeft"></i>등록 하기
-									</button>
+								<textarea class="form-control" rows="8" minlength="2" maxlength="500" placeholder="최대  500자 이내 입력" name="GuestBookContent" id="guestBookContent"></textarea>
+								<br>
+								<button class="btn btn-primary form-control" style="float:right; width:150px;"id="submit_guestBook">
+									<i class="fa fa-check spaceLeft"></i>등록 하기
+								</button>
 							</form>
 		
 						</div>
@@ -507,24 +506,23 @@
 							전체 수익 현황 (미구현)  <i class="fa fa-arrow-right"></i>
 						</button>
 					</div>
-					<hr>
 			</c:if>
 		</c:if>	
 	</c:if>
 	
 	<c:if test="${shop == null}">
 		<c:if test="${member != null && url eq 'main'}">
-			<img src="${path}/resources/image/no_shop.png">
+			<img src="${path}/resources/image/no_shop.png" class="warning_pictures">
 			<h2>현재 상점이 개설되지 않았습니다.</h2>
-			<button class="button card-panel waves-effect white" id="goAddShop">가게 생성</button>
+			<button class="w3-button w3-dark-grey width_200" id="goAddShop">가게 생성</button>
 		</c:if>
 		<c:if test="${url ne 'main'}">
-			<img src="${path}/resources/image/no_url.png">
+			<img src="${path}/resources/image/no_url.png" class="warning_pictures">
 			<h2>상점이 개설되지 않았거나 올바른 주소가 아닙니다.</h2>
-			<button class="button card-panel waves-effect white" onclick="main()">돌아 가기</button>
+			<button class="w3-button w3-dark-grey width_200" onclick="main()">돌아 가기</button>
 		</c:if>
 	</c:if>
-	        
+	        <hr>
 			<div class="w3-container">
 			<h5>만든 사람들</h5>
 			<div class="w3-row">

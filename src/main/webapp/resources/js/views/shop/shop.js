@@ -52,7 +52,7 @@ $(function() {
 							success : function(data) {
 								if(data == 1) {
 									alert("상점 개설을 축하합니다.");
-									location.href = "./successInsertShop";
+									location.href = "../main";
 								} else if (data == 0) {
 									alert("상점 개설에  실패하였습니다.");
 								} else {

@@ -27,4 +27,10 @@
 		select * from food
 		where shopCode=#{shopCode}
 	</select>
+	
+	<select id="getFoodImage" resultType="string">
+		select foodImage
+		from foodImage
+		where foodCode = #{foodCode}
+	</select>
 </mapper>

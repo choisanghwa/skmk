@@ -19,13 +19,17 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberDTO loginMember(MemberDTO member) {
 		// TODO Auto-generated method stub
-		return memberDao.loginMember(member);
+		MemberDTO result = memberDao.loginMember(member);
+		result.setMemberImage("member/" + result.getMemberImage());
+		return result;
 	}
 
 	@Override
 	public MemberDTO getUserInfoByMail(String memberMail) {
 		// TODO Auto-generated method stub
-		return memberDao.getUserInfoByMail(memberMail);
+		MemberDTO result = memberDao.getUserInfoByMail(memberMail);
+		result.setMemberImage("member/" + result.getMemberImage());
+		return result;
 	}
 
 	@Override

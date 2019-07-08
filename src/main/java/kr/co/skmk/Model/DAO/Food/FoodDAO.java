@@ -8,4 +8,5 @@ public interface FoodDAO {
 
 	public int insertFood(FoodDTO food);
 	public List<FoodDTO> getFoodList(String shopCode);
+	public List<String> getFoodImage(String foodCode);
 }

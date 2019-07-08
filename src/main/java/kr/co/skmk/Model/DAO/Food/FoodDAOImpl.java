@@ -1,5 +1,6 @@
 package kr.co.skmk.Model.DAO.Food;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -32,6 +33,18 @@ public class FoodDAOImpl implements FoodDAO {
 	public List<FoodDTO> getFoodList(String shopCode) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("food.getFoodList", shopCode);
+	}
+
+	@Override
+	public List<String> getFoodImage(String foodCode) {
+		// TODO Auto-generated method stub
+		List<String> list = sqlSession.selectList("food.getFoodImage", foodCode);
+		List<String> result = new ArrayList();
+
+		for(String image : list) {
+			result.add("food/" + image);
+		}
+		return result;
 	}
 
 }

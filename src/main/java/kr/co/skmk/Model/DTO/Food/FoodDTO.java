@@ -13,12 +13,45 @@ public class FoodDTO {
 	private List<String> foodImage;
 	private List<MultipartFile> foodImageFile;
 	
+	public FoodDTO(String shopCode, String foodCode, String foodName, String foodPrice, List<String> foodImage, List<MultipartFile> foodImageFile) {
+		this.shopCode  = shopCode;
+		this.foodCode  = foodCode;
+		this.foodName  = foodName;
+		this.foodPrice = foodPrice;
+		this.foodImage = foodImage;
+		this.foodImageFile = foodImageFile;
+	}
+	
+	public FoodDTO() {
+	}
+	
 	public FoodDTO(String shopCode) {
 		this.shopCode = shopCode;
 	}
 	
+	public FoodDTO(String foodName, String foodPrice, List<MultipartFile> foodImageFile) {
+		this.foodName  = foodName;
+		this.foodPrice = foodPrice;
+		this.foodImageFile  = foodImageFile;
+	}
+	
 	public FoodDTO(String foodCode, String foodName, String foodPrice, String shopCode) {
 		this.shopCode  = shopCode;
+		this.foodCode  = foodCode;
+		this.foodName  = foodName;
+		this.foodPrice = foodPrice;
+	}
+	
+	public FoodDTO(String foodCode, String foodName, String foodPrice, String shopCode, List<MultipartFile> foodImageFile) {
+		this.shopCode  = shopCode;
+		this.foodCode  = foodCode;
+		this.foodName  = foodName;
+		this.foodPrice = foodPrice;
+		this.foodImageFile  = foodImageFile;
+	}
+	
+	public FoodDTO(String foodCode, String foodName, String foodPrice, List<MultipartFile> foodImageFile) {
+		this.foodImageFile  = foodImageFile;
 		this.foodCode  = foodCode;
 		this.foodName  = foodName;
 		this.foodPrice = foodPrice;

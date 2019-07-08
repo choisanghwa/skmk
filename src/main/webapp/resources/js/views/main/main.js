@@ -1,10 +1,4 @@
 
-$(document).ready(function(){
-	$(".product").click(function(){
-        $("#foodModal").modal();
-    });
-});
-
 /* 슬라이드 쇼 관련 자바스크립트 */
 var slideIndex = 1;
 showSlides(slideIndex);
@@ -84,7 +78,6 @@ function openBoard(boardName, elmnt) {
 		dash_buttons[i].style.backgroundColor = "";
 	}
 	document.getElementById(boardName).style.display = "block";
-	elmnt.style.backgroundColor = color;
 
 }
 

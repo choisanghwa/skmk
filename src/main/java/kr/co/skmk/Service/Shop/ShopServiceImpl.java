@@ -20,7 +20,12 @@ public class ShopServiceImpl implements ShopService {
 	@Override
 	public ShopDTO searchShop(String shopCode) {
 		// TODO Auto-generated method stub
-		return shopDao.searchShop(shopCode);
+		ShopDTO result = shopDao.searchShop(shopCode);
+		if(result != null) {
+			result.setShopLogo("shop/" + result.getShopLogo());
+			if(result.getShopQR() != null) result.setShopQR("qr/" + result.getShopQR());			
+		}
+		return result;
 	}
 
 }

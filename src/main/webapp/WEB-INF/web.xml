@@ -37,4 +37,9 @@
 		<filter-name>encoding</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<!-- 톰캣이 실행될 때, 특정 클래스가 실행되도록 설정 -->
+	<listener>
+		<listener-class>kr.co.skmk.ContextListener.ContextListener</listener-class>
+	</listener>
 </web-app>

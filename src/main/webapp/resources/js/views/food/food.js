@@ -1,9 +1,10 @@
 var slideIndex = 1;
 
 $(document).ready(function(){	
+	// showFoodSlides(slideIndex); 
 	$(".product").click(function(){
-		// showSlides(1);
-		$("#foodModal").modal();
+ 		showFoodDetail($(this).attr("data-food"));
+// 		$("#foodModal").modal();
 		
     });
 });
@@ -58,9 +59,20 @@ $(function() {
 });
 
 
+
+
+
+function plusSlides(n) {
+  showFoodSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showFoodSlides(slideIndex = n);
+}
+
 function showFoodSlides(n) {
 	var i;
-	var slides = document.getElementsByClassName("mySlides");
+	var slides = document.getElementsByClassName("food-fullPicture");
 	var dots = document.getElementsByClassName("demo");
 	var captionText = document.getElementById("caption");
 	if (n > slides.length) {
@@ -78,4 +90,19 @@ function showFoodSlides(n) {
 	slides[slideIndex - 1].style.display = "block";
 	dots[slideIndex - 1].className += " active";
 	captionText.innerHTML = dots[slideIndex - 1].alt;
+}
+
+function showFoodDetail(foodCode) {
+	$.ajax({
+		url : './food/getFoodDetail',
+		type : 'POST',
+		data : {"foodCode" : foodCode},
+		dataType : "text",
+		success : function(data) {
+			alert("테스트 성공")
+		},
+		error : function(value) {
+			alert("AJAX Error!");
+		}
+	});
 }

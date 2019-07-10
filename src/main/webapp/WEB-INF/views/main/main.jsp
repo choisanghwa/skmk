@@ -134,7 +134,7 @@
 			</div>
 			<div class="w3-panel dashBoard" id="dash_menu" style="display:block;">			
 				<c:forEach items="${foodList}" var="foodList">
-					<div class="product" id="openModal">
+					<div class="product" data-food="${foodList.foodCode}" id="openModal">
 						<img src="${path}/resources/image/${foodList.foodImage[0]}" class="product_picture">
 						<p>${foodList.foodName}</p>
 						<p>${foodList.foodPrice} 원</p>
@@ -360,7 +360,7 @@
 		
 					<div class="w3-panel dashBoard" id="dash_menu">			
 						<c:forEach items="${foodList}" var="foodList">
-							<div class="product" id="openModal">
+							<div class="product" data-food="${foodList.foodCode}" id="openModal">
 								<img src="${path}/resources/image/${foodList.foodImage[0]}" class="product_picture">
 								<p>${foodList.foodName}</p>
 								<p>${foodList.foodPrice} 원</p>

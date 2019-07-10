@@ -5,20 +5,17 @@
 /* Position the image container (needed to position the left and right arrows) */
 .food-container {
   position: relative;
+  display: inline-flex;
 }
 
 /* Hide the images by default */
-.food-mySlides {
+.food-fullPicture {
   display: none;
 }
 
 /* Add a pointer when hovering over the thumbnail images */
 .cursor {
   cursor: pointer;
-}
-
-.container div {
-  float:left;
 }
 
 .food-row:after {
@@ -28,8 +25,9 @@
 }
 
 /* Six columns side by side */
-.column {
+.food-column {
   width: 33.3333333333333%;
+  float:left;
 }
 
 /* Add a transparency effect for thumnbail images */

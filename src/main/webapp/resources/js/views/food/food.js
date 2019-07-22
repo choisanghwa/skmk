@@ -97,9 +97,15 @@ function showFoodDetail(foodCode) {
 		url : './food/getFoodDetail',
 		type : 'POST',
 		data : {"foodCode" : foodCode},
-		dataType : "text",
+		dataType : "json",
 		success : function(data) {
-			alert("테스트 성공")
+			if(data != null) {
+				var result = data['result'];
+				console.log(result);
+			}
+			else {
+				alert("AJAX Error!");
+			}
 		},
 		error : function(value) {
 			alert("AJAX Error!");

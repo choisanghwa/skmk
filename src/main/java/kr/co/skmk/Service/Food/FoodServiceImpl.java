@@ -30,4 +30,9 @@ public class FoodServiceImpl implements FoodService {
 		return list;
 	}
 
+	@Override
+	public FoodDTO getFoodDetail(FoodDTO dto) {
+		dto.setFoodImage(foodDao.getFoodImage(dto.getFoodCode()));
+		return dto;
+	}
 }

@@ -66,22 +66,45 @@ public class FoodController {
 	
 	@ResponseBody
 	@RequestMapping(value="/food/getFoodDetail", method=RequestMethod.POST)
-	public JSONArray getFoodDetail(@ModelAttribute FoodDTO dto, HttpSession session) {
-		
-		System.out.println(dto);
-		JSONArray result = new JSONArray();
-		return result;
+	public JSONObject getFoodDetail(@ModelAttribute FoodDTO dto, HttpSession session) {		
+		return makeResult(foodService.getFoodDetail(dto).getFoodImage());
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="/qr/{shopCode}", method=RequestMethod.GET)
 	JSONArray getFoodList(@PathVariable("shopCode") String shopCode, HttpSession session) {
 		JSONArray result = new JSONArray();
-		List<FoodDTO> dto = foodService.getFoodList(shopCode);
+		List<FoodDTO> list = foodService.getFoodList(shopCode);
+		return getByJsonArray(list);
+	}
+	
+	public JSONArray getByJsonArray(List<FoodDTO> list) {
+		JSONArray result = new JSONArray();
 		
-		JSONObject obj = new JSONObject();
-		obj.put("list", dto);
-		result.add(obj);
+		for (FoodDTO dto : list) {
+			JSONObject obj = parseJSONObject(dto);
+			result.add(obj);
+		}
+		
+		return result;
+	}
+	
+	public JSONObject parseJSONObject(FoodDTO dto) {
+		
+		JSONObject result = new JSONObject();
+		result.put("shopCode", dto.getShopCode());
+		result.put("foodCode", dto.getFoodCode());
+		result.put("foodName", dto.getFoodName());
+		result.put("shopPrice", dto.getFoodPrice());
+		result.put("getfoodImage", dto.getFoodImage());
+		
+		return result;
+	}
+	
+	private JSONObject makeResult(List<String> inputs) {
+		
+		JSONObject result = new JSONObject();
+		result.put("result", inputs);
 		return result;
 	}
 }

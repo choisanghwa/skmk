@@ -8,4 +8,5 @@ public interface FoodService {
 
 	public int insertFood(FoodDTO food);
 	public List<FoodDTO> getFoodList(String shopCode);
+	public FoodDTO getFoodDetail(FoodDTO dto);
 }

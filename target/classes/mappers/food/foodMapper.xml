@@ -33,4 +33,9 @@
 		from foodImage
 		where foodCode = #{foodCode}
 	</select>
+	
+	<select id="getFoodDetail" resultType="foodDto">
+		select * from food
+		where foodCode = #{foodCode}
+	</select>
 </mapper>

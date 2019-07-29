@@ -523,7 +523,7 @@
 		</c:if>
 	</c:if>
 	        <hr>
-			<div class="w3-container">
+			<div class="w3-container background_us">
 			<h5>만든 사람들</h5>
 			<div class="w3-row">
 				<div class="w3-col m2 text-center">
@@ -608,7 +608,15 @@
 				<h4 class="modal-title">음식 상세 화면</h4>
 			</div>
 			<div class="modal-body bodyFoodModal">
-				<h2><b>테스트중</b></h2>
+				<div class="food-container">
+				  <div class="food-slideArea"></div>
+				  <div class="food-listArea"><div class="food-row"></div></div>
+				</div>
+				<hr>
+				<div class="food-detailArea">
+				  	<div id="foodName">바닷가</div><br>
+				  	<div id="foodPrice">20000 원</div>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default closeChatRouteModal"

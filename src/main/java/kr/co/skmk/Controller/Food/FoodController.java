@@ -67,7 +67,7 @@ public class FoodController {
 	@ResponseBody
 	@RequestMapping(value="/food/getFoodDetail", method=RequestMethod.POST)
 	public JSONObject getFoodDetail(@ModelAttribute FoodDTO dto, HttpSession session) {		
-		return makeResult(foodService.getFoodDetail(dto).getFoodImage());
+		return makeResult(foodService.getFoodDetail(dto));
 	}
 	
 	@ResponseBody
@@ -101,10 +101,14 @@ public class FoodController {
 		return result;
 	}
 	
-	private JSONObject makeResult(List<String> inputs) {
-		
+	private JSONObject makeResult(FoodDTO dto) {
 		JSONObject result = new JSONObject();
-		result.put("result", inputs);
+		
+		result.put("shopCode", dto.getShopCode());
+		result.put("foodCode", dto.getFoodCode());
+		result.put("foodName", dto.getFoodName());
+		result.put("shopPrice", dto.getFoodPrice());
+		result.put("result", dto.getFoodImage());
 		return result;
 	}
 }

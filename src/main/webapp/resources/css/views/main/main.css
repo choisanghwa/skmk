@@ -77,3 +77,13 @@
 .width_200 {
 	width : 200px;
 }
+
+.background_us {
+	background-image: url('../../../image/background_us.png');
+
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}

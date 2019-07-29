@@ -32,6 +32,7 @@ public class FoodServiceImpl implements FoodService {
 
 	@Override
 	public FoodDTO getFoodDetail(FoodDTO dto) {
+		dto = foodDao.getFoodDetail(dto);
 		dto.setFoodImage(foodDao.getFoodImage(dto.getFoodCode()));
 		return dto;
 	}

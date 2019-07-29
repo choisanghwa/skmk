@@ -4,8 +4,7 @@ $(document).ready(function(){
 	// showFoodSlides(slideIndex); 
 	$(".product").click(function(){
  		showFoodDetail($(this).attr("data-food"));
-// 		$("#foodModal").modal();
-		
+ 		$("#foodModal").modal();	
     });
 });
 
@@ -67,7 +66,7 @@ function plusSlides(n) {
 }
 
 function currentSlide(n) {
-  showFoodSlides(slideIndex = n);
+  showFoodSlides(slideIndex = n + 1);
 }
 
 function showFoodSlides(n) {
@@ -89,7 +88,6 @@ function showFoodSlides(n) {
 	}
 	slides[slideIndex - 1].style.display = "block";
 	dots[slideIndex - 1].className += " active";
-	captionText.innerHTML = dots[slideIndex - 1].alt;
 }
 
 function showFoodDetail(foodCode) {
@@ -101,7 +99,16 @@ function showFoodDetail(foodCode) {
 		success : function(data) {
 			if(data != null) {
 				var result = data['result'];
-				console.log(result);
+				$(".food-slideArea").empty();
+				$(".food-row").empty();
+				result.forEach(function(item, index) {
+					$(".food-slideArea").append("<div class='food-fullPicture'>" +
+						"<img src='/skmk/resources/image/" + item + "'></div>");
+					$(".food-row").append("<div class='food-column'>" +
+				        "<img class='food-listPicture demo cursor' src='/skmk/resources/image/" + item + "'" +
+				        "onmouseover='currentSlide(" + index +")'> </div>");
+				});
+				currentSlide(1);
 			}
 			else {
 				alert("AJAX Error!");

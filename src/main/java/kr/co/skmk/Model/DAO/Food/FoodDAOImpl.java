@@ -47,4 +47,10 @@ public class FoodDAOImpl implements FoodDAO {
 		return result;
 	}
 
+	@Override
+	public FoodDTO getFoodDetail(FoodDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("food.getFoodDetail", dto.getFoodCode());
+	}
+
 }

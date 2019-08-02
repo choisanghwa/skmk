@@ -1,8 +1,12 @@
 package kr.co.skmk.Model.DTO.Orders;
 
+import java.util.Date;
+
+import javax.xml.crypto.Data;
+
 public class OrderDTO {
 	private String ordercode;
-	private date orderdata;
+	private Date orderdata;
 	private String foodcode;
 	private String shopcode;
 	private String membermail;
@@ -13,10 +17,10 @@ public class OrderDTO {
 	public void setOrdercode(String ordercode) {
 		this.ordercode = ordercode;
 	}
-	public date getOrderdata() {
+	public Date getOrderdata() {
 		return orderdata;
 	}
-	public void setOrderdata(date orderdata) {
+	public void setOrderdata(Date orderdata) {
 		this.orderdata = orderdata;
 	}
 	public String getFoodcode() {

@@ -9,6 +9,7 @@
 		<typeAlias alias="shopDto" type="kr.co.skmk.Model.DTO.Shop.ShopDTO" />
 		<typeAlias alias="foodDto" type="kr.co.skmk.Model.DTO.Food.FoodDTO" />
 		<typeAlias alias="guestBookDto" type="kr.co.skmk.Model.DTO.GuestBook.GuestBookDTO" />
+		<typeAlias alias="ordersDto" type="kr.co.skmk.Model.DTO.Orders.OrderDTO"/>
 	</typeAliases>
 	
 	<typeHandlers>

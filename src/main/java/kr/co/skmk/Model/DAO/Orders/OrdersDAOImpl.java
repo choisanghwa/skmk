@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.skmk.Model.DAO.Food.FoodDAOImpl;
+import kr.co.skmk.Model.DTO.Orders.OrderDTO;
 
 public class OrdersDAOImpl implements OrdersDAO {
 	
@@ -17,10 +18,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 	private static final Logger logger = LoggerFactory.getLogger(FoodDAOImpl.class);
 	
 	@Override
-	public int insertOrder(OrdersDAO order) throws Exception {
+	public void insertOrder(OrderDTO order) throws Exception {
 		// TODO Auto-generated method stub
-			
-		return sqlSession.insert(namespace+".insertOrder",order);
+		 sqlSession.insert(namespace+".insertOrder",order);
 	}
 
 }

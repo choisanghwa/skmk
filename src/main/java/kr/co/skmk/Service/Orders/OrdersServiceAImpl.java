@@ -3,6 +3,7 @@ package kr.co.skmk.Service.Orders;
 import javax.inject.Inject;
 
 import kr.co.skmk.Model.DAO.Orders.OrdersDAO;
+import kr.co.skmk.Model.DTO.Orders.OrderDTO;
 
 
 public class OrdersServiceAImpl implements OrdersService{
@@ -11,9 +12,9 @@ public class OrdersServiceAImpl implements OrdersService{
 	OrdersDAO orderdao;
 	
 	@Override
-	public int insertOrder(OrdersDAO order) throws Exception {
-		// TODO Auto-generated method stub
-		return orderdao.insertOrder(order);
+	public void insertOrder(OrderDTO order) throws Exception {
+		
+		orderdao.insertOrder(order);
 	}
 
 }

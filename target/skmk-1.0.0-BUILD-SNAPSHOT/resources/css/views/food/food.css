@@ -1,0 +1,55 @@
+.food-container img {
+  vertical-align: middle;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.food-container {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Hide the images by default */
+.food-fullPicture {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+.food-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.food-column {
+  width: 33.3333333333333%;
+  float:left;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.food-active,
+.demo:hover {
+  opacity: 1;
+}
+
+.food-slideArea {
+  width:45%;
+  padding-right: 2.5%;
+  border-right: 1px solid grey;
+}
+.food-listArea {
+  padding-left:2.5%;
+  width:55%;
+}
+
+.food-fullPicture img, .food-listPicture {
+  width:100%;
+}

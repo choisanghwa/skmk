@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+.wrapper {
+  width: 90%;
+  max-width: 450px;
+  height : 100%;
+  margin : 0 auto;
+  text-align : center;
+  padding-top : 20vh;
+}
+
+/* 타이틀 Div */
+
+.title {
+  height : 20vh;
+  max-width: 450px;
+  width : 90%;
+  background: black;
+  margin : 0 auto;
+  font-size : 5vh;
+  color : white;
+  text-align : center;
+  display:table-cell;
+  vertical-align:middle;
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 2s;
+  font-family: Youth;
+}
+
+
+/* 로그인 폼 관련 CSS */
+
+#formContent {
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  padding: 30px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  padding: 0px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+  margin : 30px auto;
+
+}
+
+.loginForm  {
+  background-color: #56baed;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 22px;
+  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  margin: 15px 20px 15px 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  width : 50%;
+  vertical-align : center;
+  font-family: Youth;
+}
+
+.loginForm:hover  {
+  background-color: #39ace7;
+}
+
+.loginForm:active  {
+  -moz-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+.loginText {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+input[type=text]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=text]:placeholder {
+  color: #cccccc;
+}
+
+/* 로그인 타이틀 애니메이션 CSS */
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+  0%   {background-color: white;}
+  50%  {background-color: black; color : black;}
+  100% {color : white;}
+}
+
+/* Standard syntax */
+@keyframes example {
+  0%   {background-color: white;}
+  50%  {background-color: black; color : black;}
+  100% {color : white;}
+}

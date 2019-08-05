@@ -1,0 +1,89 @@
+/* 컨텐츠 영역에 대한 css */
+
+.contents-wrap {
+  width: 100%;
+  height: 500px;
+  text-align: center;
+}
+
+.button {
+  pointer : cursor;
+  font-family : Youth;
+  font-size :25px;
+  color : #333743;
+  width : 450px;
+  height : 100px;
+  font-weight : bold;
+}
+
+@media all and (max-width:768px) {
+  .button {
+    width : 100%;
+  }
+}
+
+.foodList {
+	width : 50px;
+	height: 50px;
+}
+
+.w3-quarter {
+	cursor: pointer;
+}
+
+.button_alerm:hover {
+	background-color: #C51811 !important;
+}
+
+.button_chart:hover {
+	background-color: #106FC2 !important;
+}
+
+.button_menu:hover {
+	background-color: #007A6E !important;
+}
+
+.button_user:hover {
+	background-color: #EA8B00 !important;
+}
+
+.dashBoard {
+	display: none;
+	text-align: center;
+	padding: 0;
+}
+
+.product_picture {
+	width: 200px;
+	height: 200px;
+}
+
+.product {
+	text-align: center;
+	float: left;
+	padding: 16px;
+	cursor : pointer;
+}
+
+.slide_button {
+	position : absolute;
+}
+
+.warning_pictures {
+	width : 250;
+	margin : 50 0;
+}
+
+.width_200 {
+	width : 200px;
+}
+
+.background_us {
+	background-image: url('../../../image/background_us.png');
+
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}

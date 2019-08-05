@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+/*J 글꼴 임포트 */
+
+@font-face {
+	font-family : Youth;
+	src : url("./font/Daum_Regular.ttf");
+}
+
+/* Basic */
+* {box-sizing: border-box}
+
+body {
+	height: 100vh;
+	font-family: Youth !important;
+	margin:0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family : Youth !important;
+}
+/* 모바일 크기  */
+
+@media all and (min-width:320px) {
+  body {
+
+  }
+}
+
+/* 태블릿 크기 */
+
+@media all and (min-width:768px) {
+  body {
+
+  }
+}
+
+/* 일반 PC 크기 */
+
+@media all and (min-width:960px) {
+  body {
+
+  }
+}

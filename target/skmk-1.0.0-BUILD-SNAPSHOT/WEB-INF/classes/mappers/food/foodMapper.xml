@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Maptter 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<!-- 다른 mapper와 중복되지 않도록 네임 스페이스 기재 -->
+<mapper namespace="food">
+	
+	<insert id="insertFood">
+		insert into food (foodCode, shopCode, foodName, foodPrice)
+		values (foodCode.NEXTVAL, #{shopCode}, #{foodName}, #{foodPrice})
+	</insert>
+	
+	<insert id="insertFoodImage">
+		insert all  
+		<foreach collection="foodImage" item="item">	
+			into foodImage (foodCode, foodImage) values (#{foodCode}, #{item})
+		</foreach>
+		SELECT * FROM dual
+	</insert>
+		
+	<select id="searchFoodCode" parameterType="foodDto" resultType="string">
+		select max(foodCode)
+		from food where shopCode=#{shopCode}
+	</select>
+	
+	<select id="getFoodList" resultType="foodDto">
+		select * from food
+		where shopCode=#{shopCode}
+	</select>
+	
+	<select id="getFoodImage" resultType="string">
+		select foodImage
+		from foodImage
+		where foodCode = #{foodCode}
+	</select>
+	
+	<select id="getFoodDetail" resultType="foodDto">
+		select * from food
+		where foodCode = #{foodCode}
+	</select>
+</mapper>

@@ -1,0 +1,13 @@
+.contentItem {
+    display: none;
+}
+.contentItem.showed {
+    display: block;
+}
+.contentItem:after {
+    display: none;
+}
+
+#loadMore {
+	cursor : pointer;
+}

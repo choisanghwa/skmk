@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Maptter 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="shop">
+
+	<insert id="insertShop">
+		insert into shop(shopCode, shopName, shopAddress, shopLogo, shopLicense, memberMail)
+		values (#{shopCode}, #{shopName}, #{shopAddress}, #{shopLogo}, #{shopLicense}, #{memberMail})
+	</insert>
+
+	<select id="searchShop" resultType="shopDto">
+		select *
+		from shop
+		where shopCode = #{shopCode}
+	</select>
+</mapper>

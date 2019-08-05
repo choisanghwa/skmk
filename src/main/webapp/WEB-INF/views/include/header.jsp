@@ -31,6 +31,13 @@
 	</c:otherwise>
 </c:choose>
 
+<!-- 특정 페이지에 대한 자바 스크립트 or CSS 파일 부가 참조 영역 -->
+<c:choose>
+	<c:when test="${page == 'main/main.jsp'}">
+		<script src="${path}/resources/js/views/effects/scroll.js"></script>
+	</c:when>
+</c:choose>
+
 <!-- CSS 참조 영역 -->
 	<link rel="stylesheet" href="${path}/resources/css/views/login/login.css">
 	<link rel="stylesheet" href="${path}/resources/css/views/main/main.css">

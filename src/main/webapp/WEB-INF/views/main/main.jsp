@@ -522,66 +522,67 @@
 			<button class="w3-button w3-dark-grey width_200" onclick="main()">돌아 가기</button>
 		</c:if>
 	</c:if>
-	        <hr>
-			<div class="w3-container background_us">
-			<h5>만든 사람들</h5>
-			<div class="w3-row">
-				<div class="w3-col m2 text-center">
-					<img class="w3-circle" src="${path}/resources/image/koo.png"
-						style="width: 96px; height: 96px">
+		<hr>
+		<div class="w3-container background_us">
+			<div class="makers_contents">
+				<h5>만든 사람들</h5>
+				<div class="w3-row makers_profile">
+					<div class="w3-col m2 text-center">
+						<img class="w3-circle" src="${path}/resources/image/koo.png"
+							style="width: 96px; height: 96px">
+					</div>
+					<div class="w3-col m10 w3-container" style="text-align:left;">
+						<h4>
+							구 본 일 <span class="w3-opacity w3-medium"> 2019년 6월 30일</span>
+						</h4>
+						<p>
+							2018년 2월 : 영진전문대학 컴퓨터정보계열 졸업<br>
+							2017년 10월  - 2018년 12월 : ㈜토탈소프트뱅크 - 응용 소프트웨어 개발직 근무<br>
+							2019년 6월 - : 2인 프로젝트 'SKMK - Social Key, Mobile Kiosk' 개발 참여
+						</p>
+						<br>
+					</div>
 				</div>
-				<div class="w3-col m10 w3-container" style="text-align:left;">
-					<h4>
-						구 본 일 <span class="w3-opacity w3-medium"> 2019년 6월 30일</span>
-					</h4>
-					<p>
-						2018년 2월 : 영진전문대학 컴퓨터정보계열 졸업<br>
-						2017년 10월  - 2018년 12월 : ㈜토탈소프트뱅크 - 응용 소프트웨어 개발직 근무<br>
-						2019년 6월 - : 2인 프로젝트 'SKMK - Social Key, Mobile Kiosk' 개발 참여
-					</p>
-					<br>
+		
+				<div class="w3-row makers_profile">
+					<div class="w3-col m2 text-center">
+						<img class="w3-circle" src="${path}/resources/image/choi.png"
+							style="width: 96px; height: 96px">
+					</div>
+					<div class="w3-col m10 w3-container" style="text-align:left;">
+						<h4>
+							최 상 화 <span class="w3-opacity w3-medium"> 2019년 6월 30일</span>
+						</h4>
+						<p>
+							2018년 2월 : 영진전문대학 컴퓨터정보계열 졸업<br>
+							2017년 10월 - 2018년 12월 : 한국건강관리협회 대구경북지역 전산직 근무<br>
+							2019년 6월 - : 2인 프로젝트 'SKMK - Social Key, Mobile Kiosk' 개발 참여
+						</p>
+						<br>
+					</div>
 				</div>
 			</div>
-	
-			<div class="w3-row">
-				<div class="w3-col m2 text-center">
-					<img class="w3-circle" src="${path}/resources/image/choi.png"
-						style="width: 96px; height: 96px">
-				</div>
-				<div class="w3-col m10 w3-container" style="text-align:left;">
-					<h4>
-						최 상 화 <span class="w3-opacity w3-medium"> 2019년 6월 30일</span>
-					</h4>
-					<p>
-						2018년 2월 : 영진전문대학 컴퓨터정보계열 졸업<br>
-						2017년 10월 - 2018년 12월 : 한국건강관리협회 대구경북지역 전산직 근무<br>
-						2019년 6월 - : 2인 프로젝트 'SKMK - Social Key, Mobile Kiosk' 개발 참여
-					</p>
-					<br>
+			<br>
+			<div class="w3-container w3-dark-grey w3-padding-32">
+				<div class="w3-row">
+					<div class="w3-container w3-third">
+						<h5 class="w3-bottombar w3-border-green">기 획</h5>
+						<p>구 본 일</p>
+						<p>최 상 화</p>
+					</div>
+					<div class="w3-container w3-third">
+						<h5 class="w3-bottombar w3-border-red">개 발</h5>
+						<p>구 본 일</p>
+						<p>최 상 화</p>
+					</div>
+					<div class="w3-container w3-third">
+						<h5 class="w3-bottombar w3-border-orange">디 자 인</h5>
+						<p>구 본 일</p>
+						<p>최 상 화</p>
+					</div>
 				</div>
 			</div>
 		</div>
-		<br>
-		<div class="w3-container w3-dark-grey w3-padding-32">
-			<div class="w3-row">
-				<div class="w3-container w3-third">
-					<h5 class="w3-bottombar w3-border-green">기 획</h5>
-					<p>구 본 일</p>
-					<p>최 상 화</p>
-				</div>
-				<div class="w3-container w3-third">
-					<h5 class="w3-bottombar w3-border-red">개 발</h5>
-					<p>구 본 일</p>
-					<p>최 상 화</p>
-				</div>
-				<div class="w3-container w3-third">
-					<h5 class="w3-bottombar w3-border-orange">디 자 인</h5>
-					<p>구 본 일</p>
-					<p>최 상 화</p>
-				</div>
-			</div>
-		</div>
-	
 		<!-- Footer -->
 		<footer class="w3-container w3-padding-16 w3-light-grey">
 			<h4>본 홈페이지는 상업적인 용도의 홈페이지가 아닙니다.</h4>

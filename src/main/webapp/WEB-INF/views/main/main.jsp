@@ -251,8 +251,8 @@
 								<div class="w3-left">
 									<i class="fa fa-eye w3-xxxlarge"></i>
 								</div>
-								<div class="w3-right">
-									<h3>0</h3>
+								<div class="w3-right odometer" id="number_statistics">
+									0
 								</div>
 								<div class="w3-clear"></div>
 								<h4>통계</h4>

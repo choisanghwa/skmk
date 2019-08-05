@@ -15,3 +15,7 @@ function scrollFunction() {
 	  divUs.removeClass("makers_profile_animate");
   }
 }
+
+
+var i = 1;
+setInterval(function() {$('#number_statistics').html(i++);}, 2000);

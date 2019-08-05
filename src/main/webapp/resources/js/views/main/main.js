@@ -1,4 +1,9 @@
 
+/* 효과적인 넘버링 이펙트 api 옵션 관련 */
+window.odometerOptions = {
+  format: '(,ddd)'
+};
+
 /* 슬라이드 쇼 관련 자바스크립트 */
 var slideIndex = 1;
 showSlides(slideIndex);

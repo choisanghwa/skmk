@@ -10,21 +10,4 @@
 		values (ordercode.NEXTVAL, #{memberMail}, #{foodcode}, #{shopcode}, #{ordercount}, sysdate)
 	</insert>
 	
-	<!-- <select id="loginMember" resultType="memberDto">
-		select *
-		from member
-		where memberMail= #{memberMail} and memberPassword = #{memberPassword}
-	</select>
-	
-	<select id="getUserInfoByMail" resultType="memberDto">
-		select *
-		from member
-		where memberMail= #{memberMail}
-	</select>
-	
-	<select id="getMemberMailByShopCode" resultType="string">
-		select memberMail from member
-			where memberMail = (select memberMail from shop
-								where shopCode = #{shopCode})
-	</select> -->
 </mapper>

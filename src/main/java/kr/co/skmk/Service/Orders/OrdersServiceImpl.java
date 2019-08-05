@@ -14,9 +14,9 @@ public class OrdersServiceImpl implements OrdersService{
 	OrdersDAO orderdao;
 	
 	@Override
-	public void insertOrder(OrderDTO order) throws Exception {
+	public int insertOrder(OrderDTO order) throws Exception {
 		
-		orderdao.insertOrder(order);
+		return orderdao.insertOrder(order);
 	}
 
 }

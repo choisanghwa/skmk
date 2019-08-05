@@ -35,10 +35,16 @@ public class OrdersController {
 		String entity = "";
 		
 		try {
-		service.insertOrder(dto);
+		
+		int i=service.insertOrder(dto);
+		if(i == 1) {
 		entity = "SUCCESS";
+		}else {
+			entity = "Fail";
+		}
+	
 		}catch(Exception e) {
-			entity = "FAIL";
+			entity = "Error";
 		}
 		return entity;
 	}

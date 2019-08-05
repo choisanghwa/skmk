@@ -20,9 +20,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 	private static final Logger logger = LoggerFactory.getLogger(FoodDAOImpl.class);
 	
 	@Override
-	public void insertOrder(OrderDTO order) throws Exception {
+	public int insertOrder(OrderDTO order) throws Exception {
 		// TODO Auto-generated method stub
-		 sqlSession.insert(namespace+".insertOrder",order);
+		return sqlSession.insert(namespace+".insertOrder",order);
 	}
 
 }

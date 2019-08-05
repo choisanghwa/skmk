@@ -33,7 +33,7 @@ public class OrdersController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/orders/insertOrder", method = RequestMethod.POST)
-	public String InsertOrders(@RequestBody OrderDTO dto){
+	public String InsertOrders(@ModelAttribute OrderDTO dto){
 		String entity = "";
 		
 		try {

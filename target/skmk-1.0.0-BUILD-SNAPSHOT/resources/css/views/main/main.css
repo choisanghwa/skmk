@@ -87,3 +87,46 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
+/* 애니메이션 효과 */
+
+.makers_contents {
+	background: rgb(255,255,255);
+	margin-top: 20px;
+	padding: 20px;
+	opacity : 0;
+	
+	-webkit-transition: 0.3s ease-out;		
+	-moz-transition: 0.3s ease-out;
+	-ms-transition: 0.3s ease-out;
+	-o-transition: 0.3s ease-out;	
+	transition: 0.3s ease-out;
+}
+
+.makers_contents_animate {
+	opacity : 1;
+	transform : translate(0);
+}
+
+
+.makers_profile {
+	margin-top : 50px;
+	opacity : 0;
+		
+	-webkit-transition: 0.3s ease-out;		
+	-moz-transition: 0.3s ease-out;
+	-ms-transition: 0.3s ease-out;
+	-o-transition: 0.3s ease-out;	
+	transition: 0.3s ease-out;
+
+	-webkit-transition-delay : 0.3s;
+	-moz-transition-delay : 0.3s;
+	-ms-transition-delay : 0.3s;
+	-o-transition-delay : 0.3s;
+	transition-delay : 0.3s;
+}
+
+.makers_profile_animate {
+	margin-top : 0 !important;
+	opacity : 1;
+}

@@ -6,8 +6,8 @@
 <mapper namespace="orders">
 	
 	<insert id="insertOrder">
-		insert into orders (ordercode ,memberMail, foodcode, shopcode, ordercount, orderdata)
-		values (ordercode.NEXTVAL, #{memberMail}, #{foodcode}, #{shopcode}, #{ordercount}, sysdate)
+		insert into orders (ordercode ,membermail, foodcode, shopcode, ordercount, orderdata)
+		values (ordercode.NEXTVAL, #{membermail}, #{foodcode}, #{shopcode}, #{ordercount}, sysdate)
 	</insert>
 	
 </mapper>

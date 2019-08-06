@@ -10,6 +10,7 @@
 
 <!-- 기본 파일 참조 -->
 	<script src="${path}/resources/js/jquery/jquery-3.4.1.min.js"></script>
+	<script src="${path}/resources/js/jquery/jQuery.print.js"></script>
 	<link rel="stylesheet" href="${path}/resources/css/font/import_fonts.css">
 	<link rel="stylesheet" href="${path}/resources/css/basic.css">
 

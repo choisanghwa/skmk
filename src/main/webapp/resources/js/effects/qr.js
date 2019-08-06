@@ -12,6 +12,8 @@ $(document).ready(function() {
 							alert("QR 코드 생성 성공");
 							$(".qr_title").html("<h5><b>등록된 qr 주소</b></h5>");
 							$("#qr_codes").attr('src', './resources/image/qr/' + result);
+							$("#qr_area").append("<button class='w3-button w3-dark-grey QRButtons'" +
+									" id='printQR'>QR 코드 인쇄</button>");
 							$("#makeQR").css('display', 'none');
 						}
 					} else {
@@ -29,4 +31,21 @@ $(document).ready(function() {
 				}
 		})
 	});	
+	
+	$(document).on("click", "#printQR", function(){
+		$("#qr_codes").print({
+			globalStyles: true,
+			mediaPrint: false,
+			stylesheet: null,
+			noPrintSelector: ".no-print",
+			iframe: true,
+			append: null,
+			prepend: null,
+			manuallyCopyFormValues: true,
+			deferred: $.Deferred(),
+			timeout: 750,
+			title: null,
+			doctype: '<!doctype html>'
+		});
+	});
 });

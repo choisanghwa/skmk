@@ -300,16 +300,17 @@
 		
 					<div class="w3-panel dashBoard" id="dash_chart" style="display:block;">
 						<div class="w3-row-padding" style="margin: 0 -16px;">
-							<div class="w3-third">
+							<div class="w3-third" id="qr_area">
 								<c:if test="${shop != null}"> 
 									<c:if test="${shop.getShopQR() == null}">
 										<span class="qr_title"><h5><b>QR 주소 없음</b></h5></span>
 										<img id="qr_codes" src="${path}/resources/image/qr/unknown_shopQR.png" style="width : 200px;" alt="QR 주소 없음" id="qr_image">
-										<button class="w3-button w3-dark-grey makeQR" id="makeQR">QR 코드 생성</button>
+										<button class="w3-button w3-dark-grey QRButtons" id="makeQR">QR 코드 생성</button>
 									</c:if>
 									<c:if test="${shop.getShopQR() != null}">
 										<span class="qr_title"><h5><b>등록된 QR 주소</b></h5></span>
 										<img id="qr_codes" src="${path}/resources/image/${shop.getShopQR()}" style="width : 200px;" alt="등록된 QR 주소">
+										<button class="w3-button w3-dark-grey QRButtons" id="printQR">QR 코드 인쇄</button>
 									</c:if>
 								</c:if>
 							</div>

@@ -10,6 +10,7 @@
 
 <!-- 기본 파일 참조 -->
 	<script src="${path}/resources/js/jquery/jquery-3.4.1.min.js"></script>
+	<link rel="stylesheet" href="${path}/resources/css/font/import_fonts.css">
 	<link rel="stylesheet" href="${path}/resources/css/basic.css">
 
 <!-- 부트스트랩 & 메터리얼 참조 (둘다 동시에 쓰면 충돌 발생함) -->
@@ -34,7 +35,9 @@
 <!-- 특정 페이지에 대한 자바 스크립트 or CSS 파일 부가 참조 영역 -->
 <c:choose>
 	<c:when test="${page == 'main/main.jsp'}">
-		<script src="${path}/resources/js/views/effects/scroll.js"></script>
+		<script src="${path}/resources/js/effects/scroll.js"></script>
+		<script src="${path}/resources/js/effects/counting.js"></script>
+		<link rel="stylesheet" href="${path}/resources/css/effects/buttons.css">
 	</c:when>
 </c:choose>
 
@@ -43,6 +46,7 @@
 	<link rel="stylesheet" href="${path}/resources/css/views/main/main.css">
 	<link rel="stylesheet" href="${path}/resources/css/views/guestBook/guestBook.css">
 	<link rel="stylesheet" href="${path}/resources/css/views/food/food.css">
+	<link rel="stylesheet" href="${path}/resources/css/effects/tooltip.css">
 	
 	<link rel="stylesheet" href="${path}/resources/css/apis/odometer/odometer-theme-minimal.css" />
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -57,3 +61,4 @@
 	<script src="${path}/resources/js/views/shop/shop.js"></script>
 	<script src="${path}/resources/js/views/food/food.js"></script>
 	<script src="${path}/resources/js/views/guestBook/guestBook.js"></script>
+	<script src="${path}/resources/js/views/orders/orders.js"></script>

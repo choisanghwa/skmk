@@ -43,7 +43,7 @@
 .food-slideArea {
   width:45%;
   padding-right: 2.5%;
-  border-right: 1px solid grey;
+  border-right: 1px solid #e3e3e3;
 }
 .food-listArea {
   padding-left:2.5%;
@@ -52,4 +52,14 @@
 
 .food-fullPicture img, .food-listPicture {
   width:100%;
+}
+
+.food-detailArea {
+	font-size : 36px;
+	font-weight:bold;
+	font-family : Nodo;
+}
+
+.food-countingArea {
+	float : right;
 }

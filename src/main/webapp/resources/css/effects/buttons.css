@@ -1,0 +1,27 @@
+a.selections {
+    display: inline-block;
+    padding: 0.3em 1em;
+    margin: 0 1em 0.3em 1em;
+    border-radius: 2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Nodo', 'Youth';
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #4eb5f1;
+    text-align: center;
+    transition: all 0.2s;
+    font-size: 0.5em;
+    cursor : pointer;
+}
+
+a.selections:hover {
+	background-color: #4095c6;
+}
+
+@media all and (max-width:30em) {
+	a.selections {
+		display: block;
+		margin: 0.2em auto;
+	}
+}

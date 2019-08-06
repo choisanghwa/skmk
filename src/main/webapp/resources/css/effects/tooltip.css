@@ -1,0 +1,47 @@
+.effect_tooltip {
+	position: relative;
+	display: inline-block;
+	border : 0 !important;
+	outline : 0 !important;
+}
+
+.effect_tooltip .effect_tooltiptext {
+	visibility: hidden;
+	width: 120px;
+	background-color: #fad041;
+	color: white;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	
+	/* Position the tooltip */
+	position: absolute;
+	z-index: 1;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -60px;
+	margin-bottom: 10px;
+	opacity: 0;
+	
+	-webkit-transition: 0.4s ease;
+	-moz-transition: 0.4s ease;
+	-ms-transition: 0.4s ease;
+	-o-transition: 0.4s ease;
+	transition: 0.4s ease;
+}
+
+.effect_tooltiptext_visible  {
+	opacity: 1 !important;
+	visibility: visible! important;
+}
+
+.effect_tooltip .effect_tooltiptext::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #fad041 transparent transparent transparent;
+}

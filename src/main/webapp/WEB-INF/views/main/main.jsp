@@ -615,11 +615,16 @@
 				</div>
 				<hr>
 				<div class="food-detailArea">
-				  	<div id="foodName">바닷가</div><br>
-				  	<div id="foodPrice">20000 원</div>
+				  	<div id="foodName">바닷가</div>
+				  	<div id="foodPrice" class="display-inline">￦ 20000</div>
+				  	<div class="food-countingArea">
+					  	<a class="selections" id="addCount">↑</a><span id="countResults">1</span><a class="selections" id="removeCount">↓</a>
+				  	</div>
 				</div>
 			</div>
 			<div class="modal-footer">
+				<button type="button" class="btn btn-warning effect_tooltip"><span id="addCart" onmouseenter="MouseEnterAddCart()" onmouseleave="MouseLeaveAddCart()"><i class="fa fa-shopping-cart"></i> 카트 추가</span><span class="effect_tooltiptext" id="goCart" onmouseenter="MouseEnterGoCart()" onmouseleave="MouseLeaveGoCart()">카트 추가 완료</span></button>
+				<button type="button" class="btn btn-success" id="purchase"><i class="fa fa-credit-card"> 즉시 구매</i></button>
 				<button type="button" class="btn btn-default closeChatRouteModal"
 					data-dismiss="modal">닫기</button>
 			</div>

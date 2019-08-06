@@ -3,6 +3,7 @@ var slideIndex = 1;
 $(document).ready(function(){	
 	// showFoodSlides(slideIndex); 
 	$(".product").click(function(){
+		$("#countResults").html(1);
  		showFoodDetail($(this).attr("data-food"));
  		$("#foodModal").modal();	
     });

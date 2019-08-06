@@ -8,7 +8,7 @@
 
 .button {
   pointer : cursor;
-  font-family : Youth;
+  font-family : Daum;
   font-size :25px;
   color : #333743;
   width : 450px;
@@ -132,5 +132,5 @@
 }
 
 #number_statistics {
-	font-size : 40px;
+	font-size : 24px;
 }

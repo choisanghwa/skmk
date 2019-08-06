@@ -1,0 +1,16 @@
+/* 글꼴 임포트 관련 CSS */
+
+@font-face {
+	font-family : Daum;
+	src : url("Daum_Regular.ttf");
+}
+
+@font-face {
+	font-family : Youth;
+	src : url("font/Youth.ttf");
+}
+
+@font-face {
+	font-family : Nodo;
+	src : url("NotoSansMonoCJKkr-Bold.otf");
+}

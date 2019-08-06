@@ -26,7 +26,7 @@
   -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
   animation-name: example;
   animation-duration: 2s;
-  font-family: Youth;
+  font-family: Daum;
 }
 
 
@@ -69,7 +69,7 @@
   transition: all 0.3s ease-in-out;
   width : 50%;
   vertical-align : center;
-  font-family: Youth;
+  font-family: Daum;
 }
 
 .loginForm:hover  {

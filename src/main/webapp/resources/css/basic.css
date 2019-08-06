@@ -1,23 +1,16 @@
 @charset "UTF-8";
 
-/*J 글꼴 임포트 */
-
-@font-face {
-	font-family : Youth;
-	src : url("./font/Daum_Regular.ttf");
-}
-
 /* Basic */
 * {box-sizing: border-box}
 
 body {
 	height: 100vh;
-	font-family: Youth !important;
+	font-family: Daum !important;
 	margin:0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family : Youth !important;
+	font-family : Daum !important;
 }
 /* 모바일 크기  */
 
@@ -41,4 +34,8 @@ h1, h2, h3, h4, h5, h6 {
   body {
 
   }
+}
+
+.display-inline {
+	display: inline;
 }

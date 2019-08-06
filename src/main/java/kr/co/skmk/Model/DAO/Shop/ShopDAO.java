@@ -6,4 +6,5 @@ public interface ShopDAO {
 
 	public int insertShop(ShopDTO shop);
 	public ShopDTO searchShop(String shopCode);
+	public int insertShopQR(ShopDTO dto);
 }

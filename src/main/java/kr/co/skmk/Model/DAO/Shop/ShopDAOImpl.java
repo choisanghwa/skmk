@@ -30,4 +30,10 @@ public class ShopDAOImpl implements ShopDAO {
 		return sqlSession.selectOne("shop.searchShop", shopCode);
 	}
 
+	@Override
+	public int insertShopQR(ShopDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("shop.insertShopQR", dto);
+	}
+
 }

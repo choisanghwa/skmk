@@ -28,6 +28,8 @@ public class IndexController {
 	public static String FILE_FOOD_PATH;
 	public static String FILE_QR_PATH;
 	
+	public static String QR_GOOGLE_API_PATH = "http://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=";
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Locale locale, Model model, HttpServletRequest request) {		
 
@@ -35,6 +37,7 @@ public class IndexController {
 		FILE_MEMBER_PATH = request.getServletContext().getRealPath("/resources/image/member").replace("\\",  "/");
 		FILE_SHOP_PATH = request.getServletContext().getRealPath("/resources/image/shop").replace("\\",  "/");
 		FILE_FOOD_PATH = request.getServletContext().getRealPath("/resources/image/food").replace("\\",  "/");
+		FILE_QR_PATH = request.getServletContext().getRealPath("/resources/image/qr").replace("\\",  "/");
 		
 		model.addAttribute("page", "login/login.jsp");
 		return "index";

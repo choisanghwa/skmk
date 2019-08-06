@@ -303,15 +303,13 @@
 							<div class="w3-third">
 								<c:if test="${shop != null}"> 
 									<c:if test="${shop.getShopQR() == null}">
-										<h5><b>QR 주소 없음</b></h5>
-										<img src="${path}/resources/image/qr/unknown_shopQR.png" style="width: 100px;"
-										alt="QR 주소 없음" id="qr_image">
-										<button class="button card-panel waves-effect white" id="makeQR" style="width : 80%;">QR 코드 생성</button>
+										<span class="qr_title"><h5><b>QR 주소 없음</b></h5></span>
+										<img id="qr_codes" src="${path}/resources/image/qr/unknown_shopQR.png" style="width : 200px;" alt="QR 주소 없음" id="qr_image">
+										<button class="w3-button w3-dark-grey makeQR" id="makeQR">QR 코드 생성</button>
 									</c:if>
 									<c:if test="${shop.getShopQR() != null}">
-										<h5><b>등록된 QR 주소</b></h5>
-										<img src="${path}/resources/image/qrcode.png" style="width: 100%"
-											alt="등록된 QR 주소">
+										<span class="qr_title"><h5><b>등록된 QR 주소</b></h5></span>
+										<img id="qr_codes" src="${path}/resources/image/${shop.getShopQR()}" style="width : 200px;" alt="등록된 QR 주소">
 									</c:if>
 								</c:if>
 							</div>

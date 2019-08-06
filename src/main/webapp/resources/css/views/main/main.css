@@ -134,3 +134,10 @@
 #number_statistics {
 	font-size : 24px;
 }
+
+.makeQR {
+	width : 80%;
+	height: 2.5em;
+	font-size: 1.5em;
+	margin-top: 30px;
+}

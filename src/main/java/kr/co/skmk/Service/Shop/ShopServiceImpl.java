@@ -28,4 +28,10 @@ public class ShopServiceImpl implements ShopService {
 		return result;
 	}
 
+	@Override
+	public int insertShopQR(ShopDTO dto) {
+		// TODO Auto-generated method stub
+		return shopDao.insertShopQR(dto);
+	}
+
 }

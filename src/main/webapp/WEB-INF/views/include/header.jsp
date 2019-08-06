@@ -62,3 +62,4 @@
 	<script src="${path}/resources/js/views/food/food.js"></script>
 	<script src="${path}/resources/js/views/guestBook/guestBook.js"></script>
 	<script src="${path}/resources/js/views/orders/orders.js"></script>
+	<script src="${path}/resources/js/effects/qr.js"></script>

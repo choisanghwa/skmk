@@ -14,4 +14,10 @@
 		from shop
 		where shopCode = #{shopCode}
 	</select>
+	
+	<update id="insertShopQR">
+		update shop
+		set shopQR = #{shopQR}
+		where shopCode = #{shopCode}
+	</update>
 </mapper>

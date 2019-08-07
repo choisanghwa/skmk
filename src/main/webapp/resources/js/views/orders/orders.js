@@ -42,5 +42,12 @@ $(document).ready(function() {
 			$("#goCart").removeClass("effect_tooltiptext_visible");			
 		}
 	});
+	
+	$("#purchase").click(function() {
+		location.href="orders/goOrders";
+	});
+	
+	$("#cancel-order").click(function() {
+		location.href = "../main";
+	});
 });
-

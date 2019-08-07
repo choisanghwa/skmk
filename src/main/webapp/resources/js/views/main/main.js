@@ -1,3 +1,4 @@
+var animating = false;
 
 /* 효과적인 넘버링 이펙트 api 옵션 관련 */
 window.odometerOptions = {
@@ -69,9 +70,29 @@ function w3_close() {
 	overlayBg.style.display = "none";
 }
 
-function openBoard(boardName, elmnt) {
-	var i, dashBoard, dash_buttons;
+function openNav(boardName, navObj) {
+	
+	if(animating == false) {
+		var elmnt;
+		
+		switch(boardName) {
+			case 'dash_menu' : elmnt = document.getElementById("button_menu"); break;
+			case 'dash_user' : elmnt = document.getElementById("button_user"); break;
+			case 'dash_alerm' : elmnt = document.getElementById("button_alerm"); break;
+			case 'dash_chart' : elmnt = document.getElementById("button_chart"); break;
+			default : elmnt = null; break;
+		}
+		
+		openBoard(boardName, elmnt);		
+	}
+}
 
+function openBoard(boardName, elmnt) {
+	var i, dashBoard, dash_buttons, navObj;
+
+	$(".nav_items").removeClass("w3-blue");
+	
+	
 	var bgColor = boardColor(boardName);
 
 	dashBoard = document.getElementsByClassName("dashBoard");
@@ -82,8 +103,18 @@ function openBoard(boardName, elmnt) {
 	for (i = 0; i < dash_buttons.length; i++) {
 		dash_buttons[i].style.backgroundColor = "";
 	}
-	document.getElementById(boardName).style.display = "block";
 
+	document.getElementById(boardName).style.display = "block";		
+
+	switch(boardName) {
+		case 'dash_menu' : navObj = document.getElementById("nav_menu"); break;
+		case 'dash_user' : navObj = document.getElementById("nav_user"); break;
+		case 'dash_alerm' : navObj = document.getElementById("nav_alerm"); break;
+		case 'dash_chart' : navObj = document.getElementById("nav_chart"); break;
+		case 'dash_cart' : navObj = document.getElementById("nav_cart"); break;
+		case 'dash_order' : navObj = document.getElementById("nav_order"); break;
+	}
+	navObj.classList.add("w3-blue");
 }
 
 function boardColor(boardName) {
@@ -136,4 +167,25 @@ $(window).resize(function() {
 	} else {
 		$("#commentTitle").removeClass("w3-left");
 	}
+});
+
+$(document).ready(function() {
+	$(".nav_items").unbind().bind('click',function(event) {
+		var id  = this.id;
+		
+		if(id == 'nav_month' || id == 'nav_product') {
+			event.preventDefault();
+			var hash = this.hash;	
+		    if (animating == false) {
+		    	$(".nav_items").removeClass("w3-blue");
+		    	$(this).addClass("w3-blue");
+		    	animating = true;
+				$('html, body').animate({
+					scrollTop : $(hash).offset().top
+					}, 0, function() { window.location.hash = hash;
+					animating = false;
+				});
+		    }
+		}
+	});
 });

@@ -13,6 +13,7 @@
 	<script src="${path}/resources/js/jquery/jQuery.print.js"></script>
 	<link rel="stylesheet" href="${path}/resources/css/font/import_fonts.css">
 	<link rel="stylesheet" href="${path}/resources/css/basic.css">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 <!-- 부트스트랩 & 메터리얼 참조 (둘다 동시에 쓰면 충돌 발생함) -->
 <c:choose>
@@ -20,6 +21,7 @@
 					page == 'member/registerMember.jsp' ||
 					page == 'shop/registerShop.jsp' ||
 					page == 'food/registerFood.jsp' ||
+					page == 'orders/orders.jsp' ||
 					page == 'main/main.jsp'}"> <!-- 부트 스트랩을 쓸  경우 -->
 		<link rel="stylesheet" href="${path}/resources/css/bootstrap/bootstrap.min.css">
 		<link rel="stylesheet" href="${path}/resources/css/bootstrap/bootstrap-theme.min.css">
@@ -38,6 +40,7 @@
 	<c:when test="${page == 'main/main.jsp'}">
 		<script src="${path}/resources/js/effects/scroll.js"></script>
 		<script src="${path}/resources/js/effects/counting.js"></script>
+		<script src="${path}/resources/js/effects/chart.js"></script>
 		<link rel="stylesheet" href="${path}/resources/css/effects/buttons.css">
 	</c:when>
 </c:choose>
@@ -47,6 +50,7 @@
 	<link rel="stylesheet" href="${path}/resources/css/views/main/main.css">
 	<link rel="stylesheet" href="${path}/resources/css/views/guestBook/guestBook.css">
 	<link rel="stylesheet" href="${path}/resources/css/views/food/food.css">
+	<link rel="stylesheet" href="${path}/resources/css/views/orders/orders.css">
 	<link rel="stylesheet" href="${path}/resources/css/effects/tooltip.css">
 	
 	<link rel="stylesheet" href="${path}/resources/css/apis/odometer/odometer-theme-minimal.css" />

@@ -36,9 +36,9 @@
 			</c:if>			
 			<br>
 			<a href="#"
-				class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a> <a
-				href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
-			<a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+				class="w3-bar-item w3-button"><i class="fa fa-user"></i></a> <a
+				href="#" class="w3-bar-item w3-button"><i class="fa fa-shopping-cart"></i></a>
+			<a href="#" class="w3-bar-item w3-button"><i class="fa fa-credit-card"></i></a>
 		</div>
 		
 		<a href="#"
@@ -59,25 +59,34 @@
 		<h5>Dashboard</h5>
 	</div>
 	<div class="w3-bar-block">
-		<a href="#"
-			class="w3-bar-item w3-button w3-padding w3-blue"><i
-			class="fa fa-users fa-fw"></i>  Overview</a> <a href="#"
-			class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-eye fa-fw"></i>  Views</a> <a href="#"
-			class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-users fa-fw"></i>  Traffic</a> <a href="#"
-			class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-bullseye fa-fw"></i>  Geo</a> <a href="#"
-			class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-diamond fa-fw"></i>  Orders</a> <a href="#"
-			class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-bell fa-fw"></i>  News</a> <a href="#"
-			class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-bank fa-fw"></i>  General</a> <a href="#"
-			class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-history fa-fw"></i>  History</a> <a href="#"
-			class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-cog fa-fw"></i>  Settings</a><br>
+		<c:if test="${member != null }"><c:if test="${url eq 'main' || (url ne 'main' && isMyShop eq '1')}">
+		<a href="#" class="w3-bar-item w3-button w3-padding nav_items" id="nav_alerm" onclick="openNav('dash_alerm', this)">
+			<i class="fas fa-comment-dollar fa-fw"></i>  알림</a>
+		<a href="#" class="w3-bar-item w3-button w3-padding nav_items w3-blue" id="nav_chart" onclick="openNav('dash_chart', this)">
+			<i class="fa fa-eye fa-fw"></i>  통계</a>
+		<a href="#graph_month" class="w3-bar-item w3-button w3-padding nav_items" id="nav_month">
+			<i class="fas fa-calendar-alt fa-fw"></i>  월간 그래프</a>
+		<a href="#graph_product" class="w3-bar-item w3-button w3-padding nav_items" id="nav_product">
+			<i class="fa fa-line-chart fa-fw"></i>  판매 수익 현황 그래프</a>
+		<a href="#" class="w3-bar-item w3-button w3-padding nav_items" id="nav_total">
+			<i class="fa fa-pie-chart fa-fw"></i> 품목별 판매 수익 현황 그래프</a>
+		</c:if></c:if>
+		<a href="#" class="w3-bar-item w3-button w3-padding nav_items" id="nav_menu" onclick="openNav('dash_menu', this)">
+			<i class="fas fa-utensils fa-fw"></i> 메뉴</a>
+		<a href="#" class="w3-bar-item w3-button w3-padding nav_items" id="nav_user" onclick="openNav('dash_user', this)">
+			<i class="fa fa fa-users fa-fw"></i>  Users</a>
+		<c:if test="${member != null }">
+		<hr>
+		<div class="w3-container">
+			<h5>개인 메뉴</h5>
+		</div>
+		<a href="#" class="w3-bar-item w3-button w3-padding nav_items">
+			<i	class="fa fa-user fa-fw"></i>  개인 정보</a>
+		<a href="#" class="w3-bar-item w3-button w3-padding nav_items" id="nav_cart" onclick="openNav('dash_cart', this)">
+			<i	class="fa fa-shopping-cart fa-fw"></i>  장바구니</a>
+		<a href="#" class="w3-bar-item w3-button w3-padding nav_items" id="nav_order" onclick="openNav('dash_order', this)">
+			<i class="fa fa-credit-card fa-fw"></i> 주문 내역</a>
+		</c:if>
 		<br>
 	</div>
 </nav>
@@ -102,13 +111,10 @@
 
 			<div class="w3-row-padding w3-margin-bottom">
 				<div class="w3-half dash_buttons"
-					onclick="openBoard('dash_menu', this)">
+					onclick="openBoard('dash_menu', this)" id="button_menu">
 					<div class="w3-container w3-teal w3-padding-16 button_menu">
 						<div class="w3-left">
-							<div class="foodList">
-								<img src="${path}/resources/image/foodList.png"
-									style="width: 100%; height: 100%;">
-							</div>
+							<i class="fas fa-utensils w3-xxxlarge"></i>
 						</div>
 						<div class="w3-right">
 							<h3>${fn:length(foodList)}</h3>
@@ -118,7 +124,7 @@
 					</div>
 				</div>
 				<div class="w3-half dash_buttons"
-					onclick="openBoard('dash_user', this)">
+					onclick="openBoard('dash_user', this)" id="button_user">
 					<div
 						class="w3-container w3-orange w3-text-white w3-padding-16 button_user">
 						<div class="w3-left">
@@ -221,6 +227,79 @@
 					</form>
 				</div>
 			</div>
+			
+			<div class="w3-panel dashBoard" id="dash_cart">
+				<h2><b>장바구니</b></h2>
+				<br>
+				<div class="col-md-8 col-md-offset-2">
+					<form role="form" id="registerMemberForm" enctype="multipart/form-data">
+						<table class="table table-hover order-table">
+							<thead>
+								<tr>
+									<th colspan="2">주문 명</th>
+									<th>판매가</th>
+									<th>수량</th>
+									<th>주문 금액</th>
+								</tr>
+							</thead>
+							<tr>
+								<td><img src="${path}/resources/image/레몬주스_1.png" style="width:100px;"></td>
+								<td valign=middle>레몬 주스_1</td>
+								<td align=center valign=middle>￦ 20000</td>
+								<td align=center valign=middle>2</td>
+								<td align=center valign=middle>￦ 40000</td>
+							</tr>
+							<tr>
+								<td><img src="${path}/resources/image/망고주스_1.png" style="width:100px;"></td>
+								<td valign=middle>망고 주스_1</td>
+								<td align=center valign=middle>￦ 14000</td>
+								<td align=center valign=middle>3</td>
+								<td align=center valign=middle>￦ 42000</td>
+							</tr>
+						</table>
+						<div class="form-group text-center">
+							<button type="submit" id="commitOrder" class="w3-button w3-dark-grey">
+								주문하기 <i class="fa fa-check spaceLeft"></i>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="w3-panel dashBoard" id="dash_order">
+				<h2><b>주문 내역</b></h2>
+				<br>
+				<div class="col-md-8 col-md-offset-2">
+					<form role="form" id="registerMemberForm" enctype="multipart/form-data">
+						<table class="table table-hover order-table">
+							<thead>
+								<tr>
+									<th colspan="2">주문 명</th>
+									<th>판매가</th>
+									<th>수량</th>
+									<th>주문 금액</th>
+								</tr>
+							</thead>
+							<tr>
+								<td><img src="${path}/resources/image/레몬주스_1.png" style="width:100px;"></td>
+								<td valign=middle>레몬 주스_1</td>
+								<td align=center valign=middle>￦ 20000</td>
+								<td align=center valign=middle>2</td>
+								<td align=center valign=middle>￦ 40000</td>
+							</tr>
+							<tr>
+								<td><img src="${path}/resources/image/망고주스_1.png" style="width:100px;"></td>
+								<td valign=middle>망고 주스_1</td>
+								<td align=center valign=middle>￦ 14000</td>
+								<td align=center valign=middle>3</td>
+								<td align=center valign=middle>￦ 42000</td>
+							</tr>
+						</table>
+						<div class="form-group text-center">
+
+						</div>
+					</form>
+				</div>
+			</div>
 		</c:if>
 		<c:if test="${member != null }">
 			<c:if test="${url eq 'main' || (url ne 'main' && isMyShop eq '1')}">		
@@ -233,7 +312,7 @@
 		
 					<div class="w3-row-padding w3-margin-bottom">
 						<div class="w3-quarter dash_buttons"
-							onclick="openBoard('dash_alerm', this)">
+							onclick="openBoard('dash_alerm', this)" id="button_alerm">
 							<div class="w3-container w3-red w3-padding-16 button_alerm">
 								<div class="w3-left">
 									<i class="fa fa-comment w3-xxxlarge"></i>
@@ -246,7 +325,7 @@
 							</div>
 						</div>
 						<div class="w3-quarter dash_buttons"
-							onclick="openBoard('dash_chart', this)">
+							onclick="openBoard('dash_chart', this)" id="button_chart">
 							<div class="w3-container w3-blue w3-padding-16 button_chart">
 								<div class="w3-left">
 									<i class="fa fa-eye w3-xxxlarge"></i>
@@ -259,13 +338,10 @@
 							</div>
 						</div>
 						<div class="w3-quarter dash_buttons"
-							onclick="openBoard('dash_menu', this)">
+							onclick="openBoard('dash_menu', this)" id="button_menu">
 							<div class="w3-container w3-teal w3-padding-16 button_menu">
 								<div class="w3-left">
-									<div class="foodList">
-										<img src="${path}/resources/image/foodList.png"
-											style="width: 100%; height: 100%;">
-									</div>
+									<i class="fas fa-utensils w3-xxxlarge"></i>
 								</div>
 								<div class="w3-right">
 									<h3>${fn:length(foodList)}</h3>
@@ -275,7 +351,7 @@
 							</div>
 						</div>
 						<div class="w3-quarter dash_buttons"
-							onclick="openBoard('dash_user', this)">
+							onclick="openBoard('dash_user', this)" id="button_user">
 							<div
 								class="w3-container w3-orange w3-text-white w3-padding-16 button_user">
 								<div class="w3-left">
@@ -447,31 +523,103 @@
 		
 						</div>
 					</div>
+					<div class="w3-panel dashBoard" id="dash_cart">
+						<h2><b>장바구니</b></h2>
+						<br>
+						<div class="col-md-8 col-md-offset-2">
+							<form role="form" id="registerMemberForm" enctype="multipart/form-data">
+								<table class="table table-hover order-table">
+									<thead>
+										<tr>
+											<th colspan="2">주문 명</th>
+											<th>판매가</th>
+											<th>수량</th>
+											<th>주문 금액</th>
+										</tr>
+									</thead>
+									<tr>
+										<td><img src="${path}/resources/image/레몬주스_1.png" style="width:100px;"></td>
+										<td valign=middle>레몬 주스_1</td>
+										<td align=center valign=middle>￦ 20000</td>
+										<td align=center valign=middle>2</td>
+										<td align=center valign=middle>￦ 40000</td>
+									</tr>
+									<tr>
+										<td><img src="${path}/resources/image/망고주스_1.png" style="width:100px;"></td>
+										<td valign=middle>망고 주스_1</td>
+										<td align=center valign=middle>￦ 14000</td>
+										<td align=center valign=middle>3</td>
+										<td align=center valign=middle>￦ 42000</td>
+									</tr>
+								</table>
+								<div class="form-group text-center">
+									<button type="submit" id="commitOrder" class="w3-button w3-dark-grey">
+										주문하기 <i class="fa fa-check spaceLeft"></i>
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="w3-panel dashBoard" id="dash_order">
+						<h2><b>주문 내역</b></h2>
+						<br>
+						<div class="col-md-8 col-md-offset-2">
+							<form role="form" id="registerMemberForm" enctype="multipart/form-data">
+								<table class="table table-hover order-table">
+									<thead>
+										<tr>
+											<th colspan="2">주문 명</th>
+											<th>판매가</th>
+											<th>수량</th>
+											<th>주문 금액</th>
+										</tr>
+									</thead>
+									<tr>
+										<td><img src="${path}/resources/image/레몬주스_1.png" style="width:100px;"></td>
+										<td valign=middle>레몬 주스_1</td>
+										<td align=center valign=middle>￦ 20000</td>
+										<td align=center valign=middle>2</td>
+										<td align=center valign=middle>￦ 40000</td>
+									</tr>
+									<tr>
+										<td><img src="${path}/resources/image/망고주스_1.png" style="width:100px;"></td>
+										<td valign=middle>망고 주스_1</td>
+										<td align=center valign=middle>￦ 14000</td>
+										<td align=center valign=middle>3</td>
+										<td align=center valign=middle>￦ 42000</td>
+									</tr>
+								</table>
+								<div class="form-group text-center">
+									
+								</div>
+							</form>
+						</div>
+					</div>
 					<hr>
-					<div class="w3-container">
+					<div class="w3-container" id="graph_month">
 						<h5><b>월간 그래프 (미구현)</b></h5>
 						<br>
 						<p><b>신규 주문 비율</b></p>
 						<div class="w3-grey">
 							<div class="w3-container w3-center w3-padding w3-green"
-								style="width: 25%">+25%</div>
+								style="width: 0%" id="chart-newOrders">0%</div>
 						</div>
 						<br>
 						<p><b>신규 고객 주문 비율</b></p>
 						<div class="w3-grey">
 							<div class="w3-container w3-center w3-padding w3-orange"
-								style="width: 50%">50%</div>
+								style="width: 0%" id="chart-newCustomers">0%</div>
 						</div>
 						<br>
 						<p><b>기존 고객 주문 비율</b></p>
 						<div class="w3-grey">
 							<div class="w3-container w3-center w3-padding w3-red"
-								style="width: 75%">75%</div>
+								style="width: 0%" id="chart-oldCustomers">0%</div>
 						</div>
 					</div>
 					<hr>
 		
-					<div class="w3-container">
+					<div class="w3-container" id="graph_product">
 						<h5><b>품목별 판매 수익 현황 그래프 (미구현)</b></h5>
 						<table
 							class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
@@ -520,7 +668,7 @@
 			<h2>상점이 개설되지 않았거나 올바른 주소가 아닙니다.</h2>
 			<button class="w3-button w3-dark-grey width_200" onclick="main()">돌아 가기</button>
 		</c:if>
-	</c:if>
+	</c:if>	
 		<hr>
 		<div class="w3-container background_us">
 			<div class="makers_contents">
@@ -561,24 +709,24 @@
 					</div>
 				</div>
 			</div>
-			<br>
-			<div class="w3-container w3-dark-grey w3-padding-32">
-				<div class="w3-row">
-					<div class="w3-container w3-third">
-						<h5 class="w3-bottombar w3-border-green">기 획</h5>
-						<p>구 본 일</p>
-						<p>최 상 화</p>
-					</div>
-					<div class="w3-container w3-third">
-						<h5 class="w3-bottombar w3-border-red">개 발</h5>
-						<p>구 본 일</p>
-						<p>최 상 화</p>
-					</div>
-					<div class="w3-container w3-third">
-						<h5 class="w3-bottombar w3-border-orange">디 자 인</h5>
-						<p>구 본 일</p>
-						<p>최 상 화</p>
-					</div>
+		</div>
+		<br>
+		<div class="w3-container w3-dark-grey w3-padding-32">
+			<div class="w3-row">
+				<div class="w3-container w3-third">
+					<h5 class="w3-bottombar w3-border-green">기 획</h5>
+					<p>구 본 일</p>
+					<p>최 상 화</p>
+				</div>
+				<div class="w3-container w3-third">
+					<h5 class="w3-bottombar w3-border-red">개 발</h5>
+					<p>구 본 일</p>
+					<p>최 상 화</p>
+				</div>
+				<div class="w3-container w3-third">
+					<h5 class="w3-bottombar w3-border-orange">디 자 인</h5>
+					<p>구 본 일</p>
+					<p>최 상 화</p>
 				</div>
 			</div>
 		</div>

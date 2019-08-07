@@ -26,7 +26,7 @@
 				음식 등록 <i class="fa fa-check spaceLeft"></i>
 			</button>
 			<button type="button" id="cancel-addFood" class="btn btn-warning">
-				개설 취소<i class="fa fa-times spaceLeft"></i>
+				등록 취소<i class="fa fa-times spaceLeft"></i>
 			</button>
 		</div>
 	</form>

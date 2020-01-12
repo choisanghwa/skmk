@@ -18,8 +18,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import kr.co.skmk.Controller.Member.MemberController;
-import kr.co.skmk.Controller.Upload.UploadController;
-import kr.co.skmk.Model.DTO.GuestBook.GuestBookDTO;
+import kr.co.skmk.Controller.Upload.UploadController; 
+import kr.co.skmk.Model.DTO.GuestBook.GuestBookDTO;// 안녕
 import kr.co.skmk.Model.DTO.Member.MemberDTO;
 import kr.co.skmk.Model.DTO.Shop.ShopDTO;
 import kr.co.skmk.Service.GuestBook.GuestBookService;

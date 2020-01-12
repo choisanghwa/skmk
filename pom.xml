@@ -219,15 +219,7 @@
 		    <groupId>com.googlecode.json-simple</groupId>
 		    <artifactId>json-simple</artifactId>
 		    <version>1.1.1</version>
-		</dependency>	
-		
-		<!-- Bitmap 라이브러리 -->
-		<dependency>
-		    <groupId>uk.gov.gchq.gaffer</groupId>
-		    <artifactId>bitmap-library</artifactId>
-		    <version>1.10.0-RC1</version>
-		</dependency>
-				
+		</dependency>					
 	</dependencies>
 	<build>
 		<plugins>
